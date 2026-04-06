@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#050a12">
+<meta name="description" content="System Cards - Product documentation and handoff tool">
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiU3lzdGVtIENhcmRzIiwic2hvcnRfbmFtZSI6IlN5c0NhcmRzIiwic3RhcnRfdXJsIjoiLiIsImRpc3BsYXkiOiJzdGFuZGFsb25lIiwiYmFja2dyb3VuZF9jb2xvciI6IiMwNTBhMTIiLCJ0aGVtZV9jb2xvciI6IiMwNTBhMTIiLCJpY29ucyI6W3sic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxOTIgMTkyJyBmaWxsPSIjN2RkM2ZjIiUzRSUzQ3BhdGggZD0nTTg4IDExMmgxNnYxNkg4OHonIGZpbGw9IiM3ZGQzZmMiLz4lM0Mvc3ZnPiIsInNpemVzIjoiMTkyeDE5MiIsInR5cGUiOiJpbWFnZS9zdmcreG1sIn1dfQ==">
+<title>System Cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --glass-bg: rgba(255,255,255,0.06);
+  --glass-border: rgba(255,255,255,0.12);
+  --glass-hover: rgba(255,255,255,0.10);
+  --accent: #7dd3fc;
+  --accent2: #c4b5fd;
+  --accent3: #6ee7b7;
+  --danger: #f87171;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --subtle: #475569;
+  --bg: #050a12;
+  --card-radius: 20px;
+  --ease-spring: cubic-bezier(0.34,1.56,0.64,1);
+  --ease-smooth: cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Mono', monospace;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── BACKGROUND ── */
+.bg-layer {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(124,58,237,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(14,165,233,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 60% 40%, rgba(16,185,129,0.08) 0%, transparent 50%),
+    #050a12;
+}
+.bg-grain {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+
+/* ── GLASS MIXIN ── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--glass-border);
+}
+
+/* ── HEADER ── */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(5,10,18,0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 0 1.25rem;
+  height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.header-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.header-actions { display: flex; gap: 0.5rem; align-items: center; }
+.icon-btn {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--muted);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s var(--ease-smooth);
+  font-size: 0.85rem;
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+}
+.icon-btn:hover { background: var(--glass-hover); color: var(--text); border-color: rgba(255,255,255,0.2); transform: scale(1.05); }
+.icon-btn.active { background: rgba(125,211,252,0.15); border-color: rgba(125,211,252,0.4); color: var(--accent); }
+.icon-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+/* ── NAV TABS ── */
+.nav-tabs {
+  display: flex; gap: 2px; padding: 0.75rem 1.25rem 0; position: relative; z-index: 1;
+}
+.tab-btn {
+  font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.78rem;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 0.5rem 1rem; border-radius: 10px 10px 0 0; border: 1px solid transparent;
+  border-bottom: none; background: transparent; color: var(--subtle);
+  cursor: pointer; transition: all 0.2s var(--ease-smooth); position: relative;
+}
+.tab-btn:hover { color: var(--muted); }
+.tab-btn.active {
+  background: var(--glass-bg); backdrop-filter: blur(24px); border-color: var(--glass-border);
+  border-bottom-color: transparent; color: var(--text);
+}
+
+/* ── MAIN CONTENT ── */
+.content { position: relative; z-index: 1; padding: 0 1.25rem 2rem; }
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadeSlideUp 0.3s var(--ease-smooth); }
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTION DIVIDER ── */
+.panel-wrap {
+  border: 1px solid var(--glass-border); border-top: none;
+  border-radius: 0 var(--card-radius) var(--card-radius) var(--card-radius);
+  background: var(--glass-bg); backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px); padding: 1.5rem;
+}
+
+/* ── FORM ── */
+.form-grid { display: grid; gap: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+
+.field { display: flex; flex-direction: column; gap: 0.35rem; }
+.field label {
+  font-family: 'Syne', sans-serif; font-size: 0.68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);
+}
+.field input, .field textarea, .field select {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px; color: var(--text); font-family: 'DM Mono', monospace;
+  font-size: 0.82rem; padding: 0.6rem 0.8rem; transition: all 0.2s var(--ease-smooth);
+  outline: none; width: 100%; resize: vertical;
+}
+.field input:focus, .field textarea:focus {
+  background: rgba(255,255,255,0.07); border-color: rgba(125,211,252,0.4);
+  box-shadow: 0 0 0 3px rgba(125,211,252,0.08);
+}
+.field textarea { min-height: 70px; }
+.field input[type="range"] {
+  padding: 0; accent-color: var(--accent); height: 4px; cursor: pointer;
+  border: none; background: transparent;
+}
+.range-display { display: flex; align-items: center; gap: 0.75rem; }
+.range-value {
+  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem;
+  color: var(--accent); min-width: 28px;
+}
+
+/* ── BUTTONS ── */
+.btn {
+  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.78rem;
+  letter-spacing: 0.04em; text-transform: uppercase; border: none;
+  border-radius: 10px; padding: 0.65rem 1.25rem; cursor: pointer;
+  transition: all 0.22s var(--ease-spring); display: inline-flex;
+  align-items: center; gap: 0.4rem; justify-content: center;
+}
+.btn:active { transform: scale(0.96); }
+.btn-primary {
+  background: linear-gradient(135deg, rgba(125,211,252,0.25), rgba(196,181,253,0.2));
+  border: 1px solid rgba(125,211,252,0.35); color: var(--accent);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, rgba(125,211,252,0.35), rgba(196,181,253,0.3));
+  transform: translateY(-1px); box-shadow: 0 4px 20px rgba(125,211,252,0.15);
+}
+.btn-secondary { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: var(--muted); }
+.btn-secondary:hover { background: rgba(255,255,255,0.09); color: var(--text); }
+.btn-danger { background: rgba(248,113,113,0.12); border: 1px solid rgba(248,113,113,0.25); color: var(--danger); }
+.btn-danger:hover { background: rgba(248,113,113,0.2); }
+.btn-ghost { background: transparent; border: 1px solid transparent; color: var(--muted); }
+.btn-ghost:hover { background: var(--glass-bg); border-color: var(--glass-border); color: var(--text); }
+
+.btn-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+
+/* ── CARD LIST ── */
+.cards-grid { display: grid; gap: 0.75rem; margin-top: 1rem; }
+
+.system-card {
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  border-radius: var(--card-radius); padding: 1.1rem 1.2rem; cursor: pointer;
+  transition: all 0.25s var(--ease-smooth); position: relative; overflow: hidden;
+}
+.system-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(125,211,252,0.04), rgba(196,181,253,0.03));
+  opacity: 0; transition: opacity 0.25s;
+}
+.system-card:hover { border-color: rgba(125,211,252,0.25); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+.system-card:hover::before { opacity: 1; }
+
+.sc-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.75rem; }
+.sc-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--text); line-height: 1.3; }
+.sc-badge {
+  flex-shrink: 0; font-family: 'Syne', sans-serif; font-size: 0.65rem;
+  font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 6px; border: 1px solid;
+}
+.badge-high { background: rgba(110,231,183,0.1); border-color: rgba(110,231,183,0.3); color: var(--accent3); }
+.badge-mid { background: rgba(125,211,252,0.1); border-color: rgba(125,211,252,0.3); color: var(--accent); }
+.badge-low { background: rgba(248,113,113,0.1); border-color: rgba(248,113,113,0.3); color: var(--danger); }
+
+.sc-oneliner { font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; font-style: italic; line-height: 1.4; }
+.sc-meta { display: flex; gap: 0.75rem; margin-top: 0.75rem; flex-wrap: wrap; }
+.sc-meta-tag {
+  font-size: 0.65rem; color: var(--subtle); background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07); padding: 0.15rem 0.5rem; border-radius: 5px;
+}
+.sc-actions {
+  display: flex; gap: 0.4rem; margin-top: 0.85rem; opacity: 0;
+  transform: translateY(4px); transition: all 0.2s var(--ease-smooth); flex-wrap: wrap;
+}
+.system-card:hover .sc-actions { opacity: 1; transform: translateY(0); }
+
+/* readiness bar */
+.readiness-bar { height: 2px; background: rgba(255,255,255,0.07); border-radius: 2px; margin-top: 0.85rem; overflow: hidden; }
+.readiness-fill { height: 100%; border-radius: 2px; transition: width 0.6s var(--ease-smooth); }
+
+/* ── MODAL ── */
+.modal-backdrop {
+  position: fixed; inset: 0; z-index: 200; background: rgba(5,10,18,0.8);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  display: flex; align-items: flex-end; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.25s var(--ease-smooth);
+}
+.modal-backdrop.open { opacity: 1; pointer-events: all; }
+.modal {
+  background: rgba(10,18,30,0.95); backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px); border: 1px solid var(--glass-border);
+  border-bottom: none; border-radius: 24px 24px 0 0; width: 100%;
+  max-width: 640px; max-height: 92dvh; overflow-y: auto; padding: 1.5rem;
+  transform: translateY(100%); transition: transform 0.35s var(--ease-spring);
+  scrollbar-width: thin; scrollbar-color: var(--glass-border) transparent;
+}
+.modal-backdrop.open .modal { transform: translateY(0); }
+.modal-handle { width: 36px; height: 4px; background: var(--glass-border); border-radius: 2px; margin: 0 auto 1.25rem; }
+.modal-title {
+  font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.15rem;
+  margin-bottom: 1.25rem; background: linear-gradient(135deg, var(--text), var(--muted));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* ── INFO PANEL (GUIDE) ── */
+.info-panel {
+  position: fixed; top: 0; right: -420px; width: 100%; max-width: 400px; height: 100dvh;
+  background: rgba(5,10,18,0.92); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  border-left: 1px solid var(--glass-border); padding: 2rem 1.5rem; overflow-y: auto;
+  transition: right 0.4s var(--ease-spring); z-index: 1001;
+}
+.info-panel.open { right: 0; box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
+.info-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.info-header h3 { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; margin: 0; color: var(--text); }
+.info-panel h4 { font-family: 'Syne', sans-serif; font-size: 0.85rem; margin: 1.5rem 0 0.5rem; color: var(--accent); }
+.info-panel p, .info-panel li { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+.info-panel ul { padding-left: 1.2rem; margin-top: 0.5rem; }
+.info-panel li { margin-bottom: 0.5rem; }
+
+/* ── DETAIL VIEW ── */
+.detail-view {
+  position: fixed; inset: 0; z-index: 150; background: rgba(5,10,18,0.92);
+  backdrop-filter: blur(16px); overflow-y: auto; transform: translateX(100%);
+  transition: transform 0.35s var(--ease-spring); padding: 1.5rem;
+  scrollbar-width: thin; scrollbar-color: var(--glass-border) transparent;
+}
+.detail-view.open { transform: translateX(0); }
+.detail-back {
+  display: inline-flex; align-items: center; gap: 0.4rem; font-family: 'Syne', sans-serif;
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--muted); background: transparent; border: none; cursor: pointer;
+  padding: 0.5rem 0; margin-bottom: 1.25rem; transition: color 0.2s;
+}
+.detail-back:hover { color: var(--text); }
+.detail-name {
+  font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.6rem; line-height: 1.1;
+  margin-bottom: 0.4rem; background: linear-gradient(135deg, var(--text) 60%, var(--muted));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.detail-oneliner { color: var(--muted); font-style: italic; margin-bottom: 1.5rem; font-size: 0.85rem; }
+.detail-section {
+  margin-bottom: 1.25rem; padding: 1rem 1.1rem; background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07); border-radius: 12px;
+}
+.detail-section-label {
+  font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.5rem;
+}
+.detail-section-body { font-size: 0.82rem; color: var(--text); line-height: 1.6; white-space: pre-wrap; }
+.detail-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.5rem; }
+.readiness-big {
+  display: flex; align-items: center; gap: 1rem; padding: 1rem 1.1rem;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px; margin-bottom: 1.25rem;
+}
+.readiness-number { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2rem; line-height: 1; }
+.readiness-label { font-size: 0.72rem; color: var(--muted); }
+.readiness-track { flex: 1; height: 6px; background: rgba(255,255,255,0.07); border-radius: 6px; overflow: hidden; }
+.readiness-track-fill { height: 100%; border-radius: 6px; transition: width 0.8s var(--ease-smooth) 0.2s; }
+
+/* ── EMPTY STATE ── */
+.empty-state { text-align: center; padding: 3rem 1.5rem; color: var(--subtle); }
+.empty-state .big-icon { font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.5; }
+.empty-state h3 { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--muted); margin-bottom: 0.4rem; }
+.empty-state p { font-size: 0.8rem; }
+
+/* ── TEMPLATES TAB ── */
+.templates-grid { display: grid; gap: 0.75rem; }
+.template-card {
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  border-radius: var(--card-radius); padding: 1.1rem 1.2rem; cursor: pointer;
+  transition: all 0.25s var(--ease-smooth); position: relative; overflow: hidden;
+}
+.template-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent2), transparent);
+  opacity: 0; transition: opacity 0.25s;
+}
+.template-card:hover { border-color: rgba(196,181,253,0.3); transform: translateY(-2px); }
+.template-card:hover::after { opacity: 1; }
+.template-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.template-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.25rem; }
+.template-desc { font-size: 0.72rem; color: var(--muted); line-height: 1.5; }
+.template-hint { font-size: 0.65rem; color: var(--subtle); margin-top: 0.5rem; }
+
+/* ── SEARCH ── */
+.search-wrap { position: relative; margin-bottom: 1rem; }
+.search-wrap input {
+  width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px; color: var(--text); font-family: 'DM Mono', monospace; font-size: 0.82rem;
+  padding: 0.6rem 0.8rem 0.6rem 2.2rem; transition: all 0.2s; outline: none;
+}
+.search-wrap input:focus { border-color: rgba(125,211,252,0.4); background: rgba(255,255,255,0.07); }
+.search-icon {
+  position: absolute; left: 0.7rem; top: 50%; transform: translateY(-50%);
+  color: var(--subtle); font-size: 0.85rem; pointer-events: none;
+}
+
+/* ── TOAST ── */
+.toast {
+  position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%) translateY(100px);
+  z-index: 999; background: rgba(10,18,30,0.95); backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border); border-radius: 10px; padding: 0.6rem 1.1rem;
+  font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--text);
+  transition: transform 0.35s var(--ease-spring); white-space: nowrap;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ── MARKDOWN PREVIEW ── */
+.md-preview {
+  background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px;
+  padding: 1rem; font-size: 0.76rem; line-height: 1.7; color: var(--muted);
+  white-space: pre-wrap; max-height: 240px; overflow-y: auto; margin-top: 0.5rem;
+  font-family: 'DM Mono', monospace; scrollbar-width: thin; scrollbar-color: var(--glass-border) transparent;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 4px; }
+
+/* ── DIVIDER ── */
+.divider { height: 1px; background: var(--glass-border); margin: 1.25rem 0; }
+
+/* ── COUNT BADGE ── */
+.count-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 18px; height: 18px; background: rgba(125,211,252,0.15); border: 1px solid rgba(125,211,252,0.25);
+  border-radius: 5px; font-family: 'Syne', sans-serif; font-size: 0.6rem; font-weight: 800;
+  color: var(--accent); margin-left: 0.35rem;
+}
+
+/* ── RIPPLE ── */
+@keyframes ripple { from { transform: scale(0); opacity: 0.4; } to { transform: scale(4); opacity: 0; } }
+.ripple-host { position: relative; overflow: hidden; }
+.ripple-dot {
+  position: absolute; border-radius: 50%; width: 60px; height: 60px;
+  background: rgba(255,255,255,0.15); pointer-events: none;
+  animation: ripple 0.5s ease-out forwards; transform-origin: center;
+}
+
+/* ── READINESS COLOR ── */
+.r-high { background: linear-gradient(90deg, var(--accent3), #34d399); color: var(--accent3); }
+.r-mid { background: linear-gradient(90deg, var(--accent), #38bdf8); color: var(--accent); }
+.r-low { background: linear-gradient(90deg, var(--danger), #fb923c); color: var(--danger); }
+
+/* ── UNDO/REDO BAR ── */
+.history-bar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(5,10,18,0.9);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--glass-border);
+  padding: 0.75rem 1.25rem;
+  display: flex; justify-content: center; gap: 1rem;
+  z-index: 90;
+  transform: translateY(100%);
+  transition: transform 0.3s var(--ease-smooth);
+}
+.history-bar.visible { transform: translateY(0); }
+.history-bar .btn { padding: 0.5rem 1rem; font-size: 0.7rem; }
+
+/* ── PWA INSTALL BUTTON ── */
+.pwa-install {
+  position: fixed; bottom: 80px; right: 1.5rem;
+  background: linear-gradient(135deg, rgba(125,211,252,0.25), rgba(196,181,253,0.2));
+  border: 1px solid rgba(125,211,252,0.35);
+  color: var(--accent);
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transform: translateY(200%);
+  transition: transform 0.4s var(--ease-spring);
+  z-index: 95;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.pwa-install.show { transform: translateY(0); }
+
+@media (min-width: 640px) {
+  .cards-grid, .templates-grid { grid-template-columns: 1fr 1fr; }
+  .panel-wrap { padding: 2rem; }
+}
+@media (min-width: 1024px) {
+  .content { max-width: 960px; margin: 0 auto; }
+  .cards-grid, .templates-grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-layer"></div>
+<div class="bg-grain"></div>
+
+<header>
+  <span class="header-logo">SYSCARDS</span>
+  <div class="header-actions">
+    <button class="icon-btn" id="undoBtn" title="Undo" onclick="undo()" disabled>↶</button>
+    <button class="icon-btn" id="redoBtn" title="Redo" onclick="redo()" disabled>↷</button>
+    <button class="icon-btn" id="infoToggle" title="Guide" onclick="toggleInfo()">i</button>
+    <button class="icon-btn" id="searchToggle" title="Search" onclick="toggleSearch()">⌕</button>
+    <button class="icon-btn" id="exportBtn" title="Export all" onclick="exportAll()">↓</button>
+  </div>
+</header>
+
+<div class="info-panel" id="infoPanel">
+  <div class="info-header">
+    <h3>System Card Guide</h3>
+    <button class="icon-btn" onclick="toggleInfo()">✕</button>
+  </div>
+  <p><strong>What is a System Card?</strong></p>
+  <ul>
+    <li>Concise documentation of a product or system.</li>
+    <li>Core inclusions: problem, solution, workflow, differentiators, monetization, and handoff readiness.</li>
+  </ul>
+
+  <h4>Best Practices</h4>
+  <ul>
+    <li>Be relentlessly clear and concise.</li>
+    <li>Focus heavily on what makes your product uniquely valuable.</li>
+    <li>Include "what works / what doesn't" to honestly guide future steps.</li>
+  </ul>
+
+  <h4>Product Type Tips</h4>
+  <ul>
+    <li><strong>AI Tool:</strong> Map the workflow, note deterministic vs. probabilistic logic areas.</li>
+    <li><strong>Media/Video:</strong> Define the pipeline, export formats, and UX insights.</li>
+    <li><strong>Dev Platform:</strong> Detail the API, onboarding flow, and integration points.</li>
+    <li><strong>Game:</strong> Outline mechanics, player experience, and monetization loops.</li>
+  </ul>
+  <div style="margin-top: 2rem; padding: 1rem; border-radius: 8px; background: rgba(125,211,252,0.1); border: 1px solid rgba(125,211,252,0.2);">
+    <p style="margin: 0; color: var(--accent); font-weight: bold; font-family: 'Syne', sans-serif;">Goal:</p>
+    <p style="margin: 0.5rem 0 0 0;">Make the card understandable in &lt;2 minutes for someone brand new to the project.</p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('cards', this)">Cards <span class="count-badge" id="cardCount">0</span></button>
+    <button class="tab-btn" onclick="switchTab('create', this)">+ New</button>
+    <button class="tab-btn" onclick="switchTab('templates', this)">Templates</button>
+  </div>
+
+  <div class="tab-panel active panel-wrap" id="tab-cards">
+    <div class="search-wrap" id="searchBox" style="display:none">
+      <span class="search-icon">⌕</span>
+      <input type="text" id="searchInput" placeholder="Search cards…" oninput="renderDashboard()">
+    </div>
+    <div class="cards-grid" id="cardList"></div>
+  </div>
+
+  <div class="tab-panel panel-wrap" id="tab-create">
+    <input type="hidden" id="cardId">
+    <div id="editBanner" style="display:none; margin-bottom:1rem; padding:0.5rem 0.8rem; background:rgba(196,181,253,0.08); border:1px solid rgba(196,181,253,0.2); border-radius:8px; font-family:'Syne',sans-serif; font-size:0.72rem; color:var(--accent2);">
+      ✏️ Editing card — <span id="editingName"></span>
+    </div>
+
+    <div class="form-grid">
+      <div class="form-row">
+        <div class="field">
+          <label>Project Name</label>
+          <input type="text" id="projectName" placeholder="e.g. Anchor">
+        </div>
+        <div class="field">
+          <label>One-Liner</label>
+          <input type="text" id="oneLiner" placeholder="What it does in one sentence">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>Target User</label>
+          <textarea id="targetUser" placeholder="Who uses this?"></textarea>
+        </div>
+        <div class="field">
+          <label>Problem</label>
+          <textarea id="problem" placeholder="What pain does it solve?"></textarea>
+        </div>
+      </div>
+      <div class="field">
+        <label>Solution</label>
+        <textarea id="solution" placeholder="How does it solve the problem?"></textarea>
+      </div>
+      <div class="field">
+        <label>Core Workflow</label>
+        <textarea id="coreWorkflow" placeholder="Step-by-step: how does a user go from zero to value?"></textarea>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>MVP Build Order</label>
+          <textarea id="mvpBuild" placeholder="Sequence: what to build first"></textarea>
+        </div>
+        <div class="field">
+          <label>Differentiation</label>
+          <textarea id="differentiation" placeholder="Why is this better / different?"></textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>Monetization</label>
+          <textarea id="monetization" placeholder="How does this make money?"></textarea>
+        </div>
+        <div class="field">
+          <label>Next Expansion</label>
+          <textarea id="nextExpansion" placeholder="What's the V2 or growth path?"></textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>What Works Well ✓</label>
+          <textarea id="worksWell" placeholder="Strengths, validated assumptions"></textarea>
+        </div>
+        <div class="field">
+          <label>What Doesn't Work ✗</label>
+          <textarea id="doesntWork" placeholder="Gaps, risks, limitations"></textarea>
+        </div>
+      </div>
+      <div class="field">
+        <label>Handoff Readiness</label>
+        <div class="range-display">
+          <input type="range" id="handoffReadiness" min="0" max="10" value="5" oninput="updateRange(this)">
+          <span class="range-value" id="rangeVal">5</span>
+          <span style="font-size:0.72rem; color:var(--subtle)">/10</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary ripple-host" onclick="saveCard(this)">⬡ Save Card</button>
+      <button class="btn btn-secondary ripple-host" onclick="previewMarkdown()">◈ Preview MD</button>
+      <button class="btn btn-ghost" onclick="resetForm()">✕ Clear</button>
+    </div>
+    <div id="mdPreviewWrap" style="display:none; margin-top:1rem;">
+      <div style="font-family:'Syne',sans-serif; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--subtle); margin-bottom:0.3rem;">Markdown Preview</div>
+      <pre class="md-preview" id="markdownOutput"></pre>
+    </div>
+  </div>
+
+  <div class="tab-panel panel-wrap" id="tab-templates">
+    <div style="margin-bottom:1.25rem;">
+      <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:1rem; margin-bottom:0.3rem;">Card Templates</div>
+      <div style="font-size:0.75rem; color:var(--muted);">Pick a template to pre-fill a new card with sensible starting points.</div>
+    </div>
+    <div class="templates-grid" id="templateGrid"></div>
+  </div>
+</div>
+
+<div class="detail-view" id="detailView">
+  <button class="detail-back" onclick="closeDetail()">← Back</button>
+  <div id="detailContent"></div>
+</div>
+
+<div class="modal-backdrop" id="deleteModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Delete this card?</div>
+    <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.25rem;">This action can't be undone. The card will be permanently removed.</p>
+    <div class="btn-row">
+      <button class="btn btn-danger" onclick="confirmDelete()">Delete</button>
+      <button class="btn btn-secondary" onclick="closeModal('deleteModal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<button class="pwa-install" id="pwaInstall" onclick="installPWA()">Install App</button>
+
+<script>
+// ─── INDEXEDDB WRAPPER ───────────────────────────────────────────────────────
+const DB_NAME = 'SystemCardsDB';
+const STORE_NAME = 'cardsStore';
+let db;
+
+const initDB = () => new Promise((resolve, reject) => {
+  const req = indexedDB.open(DB_NAME, 1);
+  req.onupgradeneeded = (e) => {
+    db = e.target.result;
+    if (!db.objectStoreNames.contains(STORE_NAME)) {
+      db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+    }
+  };
+  req.onsuccess = (e) => { db = e.target.result; resolve(); };
+  req.onerror = (e) => reject(e.target.error);
+});
+
+const dbGetAll = () => new Promise((resolve, reject) => {
+  const tx = db.transaction(STORE_NAME, 'readonly');
+  const req = tx.objectStore(STORE_NAME).getAll();
+  req.onsuccess = () => resolve(req.result);
+  req.onerror = () => reject(req.error);
+});
+
+const dbPut = (card) => new Promise((resolve, reject) => {
+  const tx = db.transaction(STORE_NAME, 'readwrite');
+  const req = tx.objectStore(STORE_NAME).put(card);
+  req.onsuccess = () => resolve();
+  req.onerror = () => reject(req.error);
+});
+
+const dbDelete = (id) => new Promise((resolve, reject) => {
+  const tx = db.transaction(STORE_NAME, 'readwrite');
+  const req = tx.objectStore(STORE_NAME).delete(id);
+  req.onsuccess = () => resolve();
+  req.onerror = () => reject(req.error);
+});
+
+const dbSyncAll = (cardsArray) => new Promise((resolve, reject) => {
+  const tx = db.transaction(STORE_NAME, 'readwrite');
+  tx.oncomplete = () => resolve();
+  tx.onerror = (e) => reject(e.target.error);
+  
+  const store = tx.objectStore(STORE_NAME);
+  store.clear().onsuccess = () => {
+    cardsArray.forEach(card => store.put(card));
+  };
+});
+
+// ─── STATE ───────────────────────────────────────────────────────────────────
+let cards = [];
+let pendingDeleteId = null;
+let activeTab = 'cards';
+
+// ─── HISTORY FOR UNDO/REDO ───────────────────────────────────────────────────
+let historyStack = [];
+let historyIndex = -1;
+const MAX_HISTORY = 50;
+
+function saveHistory() {
+  if (historyIndex < historyStack.length - 1) {
+    historyStack = historyStack.slice(0, historyIndex + 1);
+  }
+  historyStack.push(JSON.stringify(cards));
+  if (historyStack.length > MAX_HISTORY) {
+    historyStack.shift();
+  } else {
+    historyIndex++;
+  }
+  updateHistoryButtons();
+}
+
+async function undo() {
+  if (historyIndex > 0) {
+    historyIndex--;
+    cards = JSON.parse(historyStack[historyIndex]);
+    await dbSyncAll(cards); // Sync the whole state back to IndexedDB
+    renderDashboard();
+    updateCount();
+    toast('Undo successful');
+  }
+  updateHistoryButtons();
+}
+
+async function redo() {
+  if (historyIndex < historyStack.length - 1) {
+    historyIndex++;
+    cards = JSON.parse(historyStack[historyIndex]);
+    await dbSyncAll(cards); // Sync the whole state back to IndexedDB
+    renderDashboard();
+    updateCount();
+    toast('Redo successful');
+  }
+  updateHistoryButtons();
+}
+
+function updateHistoryButtons() {
+  document.getElementById('undoBtn').disabled = historyIndex <= 0;
+  document.getElementById('redoBtn').disabled = historyIndex >= historyStack.length - 1;
+}
+
+// ─── TEMPLATES DATA ──────────────────────────────────────────────────────────
+const TEMPLATES = [
+  {
+    icon: '🤖',
+    name: 'AI Tool / SaaS',
+    desc: 'AI-powered product with deterministic + probabilistic logic layers.',
+    hint: 'Perfect for: LLM wrappers, AI assistants, smart utilities',
+    data: {
+      oneLiner: 'AI-powered tool that [does X] for [audience]',
+      targetUser: 'Developers / knowledge workers who need to [task] faster without [friction].',
+      problem: 'Current tools require [manual effort] and produce [inconsistent results]. There\'s no way to [core unmet need].',
+      solution: 'An AI-assisted workflow that [does X deterministically] and [does Y via LLM], reducing [friction] by [mechanism].',
+      coreWorkflow: '1. User inputs [data/prompt]\n2. System runs deterministic validation\n3. LLM generates structured output\n4. User reviews, edits, exports',
+      mvpBuild: '1. Core input/output UI\n2. LLM integration + prompt templates\n3. Export / share\n4. Auth + persistence',
+      differentiation: 'Unlike [competitor], we [constrain LLM surface area] using [templates/schemas], producing more reliable outputs.',
+      monetization: 'Freemium: 10 generations/mo free. Pro: $12/mo unlimited. Teams: $49/mo.',
+      worksWell: 'Constrained prompts = predictable output. Fast iteration loop for power users.',
+      doesntWork: 'Cold start UX needs polish. LLM hallucinations on edge cases.',
+      nextExpansion: 'API access, Slack/Notion integration, team workspaces.',
+      handoffReadiness: '6'
+    }
+  },
+  {
+    icon: '🛠',
+    name: 'Developer Tool',
+    desc: 'CLI, library, or platform for developers. Focus on DX and integration.',
+    hint: 'Perfect for: CLIs, SDKs, dev dashboards, debugging tools',
+    data: {
+      oneLiner: 'A [CLI/library] that helps developers [do X] without [boilerplate/friction].',
+      targetUser: 'Full-stack or backend developers building [type of app] who are frustrated by [existing pain].',
+      problem: 'Setting up [X] requires [N steps] and breaks when [edge case]. Existing tools don\'t handle [specific scenario].',
+      solution: 'A single command / SDK that handles [X, Y, Z] automatically with sensible defaults and full escape hatches.',
+      coreWorkflow: '1. Install via npm/pip\n2. Run init command\n3. Configure via file or flags\n4. Integrate into existing pipeline',
+      mvpBuild: '1. Core command(s)\n2. Config file support\n3. Error messages that don\'t suck\n4. README + examples',
+      differentiation: 'Zero-config by default. Opinionated but escapable. Faster than [alternative] for [common case].',
+      monetization: 'Open source core, paid hosted dashboard or team features.',
+      worksWell: 'Developer ergonomics. Fast feedback loop.',
+      doesntWork: 'Discovery / marketing. Needs ecosystem traction.',
+      nextExpansion: 'VS Code extension, GitHub Actions integration, hosted version.',
+      handoffReadiness: '7'
+    }
+  },
+  {
+    icon: '🎬',
+    name: 'Media / Video Pipeline',
+    desc: 'Processing pipeline for video, audio, or images. Focus on formats and throughput.',
+    hint: 'Perfect for: transcoding tools, editors, content pipelines',
+    data: {
+      oneLiner: 'A browser/server pipeline that [processes/transforms] video for [use case].',
+      targetUser: 'Content creators or operations teams who need to [transcode/validate/process] video without leaving the browser.',
+      problem: 'Video [processing task] requires expensive desktop software or complex server infra. No lightweight, browser-native option exists.',
+      solution: 'Hybrid browser/server architecture using ffmpeg.wasm for in-browser processing and server-side for heavy jobs.',
+      coreWorkflow: '1. Drop file in\n2. Select output format / settings\n3. Preview metadata\n4. Process (browser or server)\n5. Download result',
+      mvpBuild: '1. File ingestion + metadata display\n2. ffmpeg.wasm integration\n3. Format options UI\n4. Progress + download',
+      differentiation: 'No upload required for small files. Falls back to server for large files. Runs offline.',
+      monetization: 'Free for <100MB. Pro: unlimited + batch + API at $9/mo.',
+      worksWell: 'In-browser processing is magic for demos. Metadata extraction is instant.',
+      doesntWork: 'Large file performance. WASM memory limits. Safari quirks.',
+      nextExpansion: 'Batch processing, S3 integration, preset library.',
+      handoffReadiness: '5'
+    }
+  },
+  {
+    icon: '🗺',
+    name: 'Internal Tool / Dashboard',
+    desc: 'Internal tooling for teams. Focus on data visibility and workflow automation.',
+    hint: 'Perfect for: ops dashboards, admin panels, internal portals',
+    data: {
+      oneLiner: 'Internal dashboard that gives [team] visibility into [data/process] and reduces [manual overhead].',
+      targetUser: '[Ops/Engineering/Sales] team at a [company type] who currently track [X] in spreadsheets or Slack.',
+      problem: 'No single place to see [data]. Status updates require [manual syncing]. Decisions are made without [key context].',
+      solution: 'Centralised dashboard pulling from [data sources] with real-time updates, status tracking, and one-click actions.',
+      coreWorkflow: '1. Auto-ingests data from [source]\n2. Displays in unified view\n3. Alerts on [conditions]\n4. Team acts from dashboard',
+      mvpBuild: '1. Data source integration\n2. Core table/card view\n3. Status + filtering\n4. Auth + roles',
+      differentiation: 'Built specifically for [our] workflow. Not a generic tool misconfigured to fit.',
+      monetization: 'Internal tool — ROI = time saved × headcount.',
+      worksWell: 'Immediate visibility. Kills status-update meetings.',
+      doesntWork: 'Data freshness if [source] has latency. Adoption if workflow change is required.',
+      nextExpansion: 'Mobile view, Slack notifications, automated reports.',
+      handoffReadiness: '8'
+    }
+  },
+  {
+    icon: '🧩',
+    name: 'Browser Extension',
+    desc: 'Browser extension that enhances a specific web app or workflow.',
+    hint: 'Perfect for: CMS tools, scraping utilities, productivity overlays',
+    data: {
+      oneLiner: 'Browser extension that [augments/extracts/automates] [X] on [target site or app].',
+      targetUser: 'Power users of [app/site] who need to [task] and are blocked by the native UI\'s limitations.',
+      problem: '[App] doesn\'t expose [data/action] in a usable format. Current workaround is [slow/fragile/manual].',
+      solution: 'Extension that hooks into the page, reads/mutates [data], and provides a clean UI for [task].',
+      coreWorkflow: '1. Install extension\n2. Navigate to [target page]\n3. Activate panel\n4. [Action: export / filter / annotate]',
+      mvpBuild: '1. Manifest + content script\n2. Target page detection\n3. Core data extraction\n4. UI panel + export',
+      differentiation: 'Works within the existing app — no separate login or tab. Faster than API workarounds.',
+      monetization: 'One-time $5–15 purchase or free for personal use.',
+      worksWell: 'Tight integration with target app. Zero-friction for existing users.',
+      doesntWork: 'Fragile if target app updates its DOM/API. Distribution via store approval.',
+      nextExpansion: 'Cross-browser support, sync to external service, team licensing.',
+      handoffReadiness: '7'
+    }
+  },
+  {
+    icon: '📦',
+    name: 'Generic / Blank',
+    desc: 'Start from scratch with a clean card structure.',
+    hint: 'Use this when your idea doesn\'t fit a category',
+    data: {
+      oneLiner: '',
+      targetUser: '',
+      problem: '',
+      solution: '',
+      coreWorkflow: '',
+      mvpBuild: '',
+      differentiation: '',
+      monetization: '',
+      worksWell: '',
+      doesntWork: '',
+      nextExpansion: '',
+      handoffReadiness: '5'
+    }
+  }
+];
+
+// ─── INIT ────────────────────────────────────────────────────────────────────
+(async function initializeApp() {
+  try {
+    await initDB();
+    cards = await dbGetAll();
+    
+    // Initialize history stack with loaded state
+    if (historyStack.length === 0) {
+      historyStack.push(JSON.stringify(cards));
+      historyIndex = 0;
+    }
+
+    updateCount();
+    renderDashboard();
+    renderTemplates();
+    updateHistoryButtons();
+  } catch (err) {
+    console.error("Failed to initialize IndexedDB:", err);
+    toast("Database load failed.");
+  }
+})();
+
+// ─── UI CONTROLS ─────────────────────────────────────────────────────────────
+function toggleInfo() {
+  document.getElementById('infoPanel').classList.toggle('open');
+}
+
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+  activeTab = name;
+}
+
+function toggleSearch() {
+  const box = document.getElementById('searchBox');
+  const btn = document.getElementById('searchToggle');
+  const shown = box.style.display !== 'none';
+  box.style.display = shown ? 'none' : 'block';
+  btn.classList.toggle('active', !shown);
+  if (!shown) document.getElementById('searchInput').focus();
+  if (!shown) {
+    const cardsBtn = document.querySelectorAll('.tab-btn')[0];
+    switchTab('cards', cardsBtn);
+  }
+}
+
+// ─── RANGE ───────────────────────────────────────────────────────────────────
+function updateRange(el) {
+  document.getElementById('rangeVal').textContent = el.value;
+}
+
+// ─── READINESS HELPERS ───────────────────────────────────────────────────────
+function readinessClass(val) {
+  const n = parseInt(val);
+  if (n >= 7) return 'r-high';
+  if (n >= 4) return 'r-mid';
+  return 'r-low';
+}
+function readinessBadgeClass(val) {
+  const n = parseInt(val);
+  if (n >= 7) return 'badge-high';
+  if (n >= 4) return 'badge-mid';
+  return 'badge-low';
+}
+function readinessPct(val) { return (parseInt(val) / 10 * 100) + '%'; }
+
+// ─── RENDER DASHBOARD ────────────────────────────────────────────────────────
+function renderDashboard() {
+  const list = document.getElementById('cardList');
+  const q = (document.getElementById('searchInput')?.value || '').toLowerCase();
+  const filtered = q
+    ? cards.filter(c => (c.projectName + c.oneLiner + c.problem).toLowerCase().includes(q))
+    : cards;
+
+  list.innerHTML = '';
+  if (filtered.length === 0) {
+    list.innerHTML = `<div class="empty-state" style="grid-column:1/-1">
+      <div class="big-icon">◈</div>
+      <h3>${q ? 'No results' : 'No cards yet'}</h3>
+      <p>${q ? 'Try a different search.' : 'Create your first card or start from a template.'}</p>
+    </div>`;
+    return;
+  }
+  filtered.forEach(c => {
+    const rc = readinessClass(c.handoffReadiness);
+    const bc = readinessBadgeClass(c.handoffReadiness);
+    const div = document.createElement('div');
+    div.className = 'system-card ripple-host';
+    div.innerHTML = `
+      <div class="sc-header">
+        <div class="sc-name">${esc(c.projectName)}</div>
+        <span class="sc-badge ${bc}">${c.handoffReadiness}/10</span>
+      </div>
+      ${c.oneLiner ? `<div class="sc-oneliner">${esc(c.oneLiner)}</div>` : ''}
+      <div class="readiness-bar"><div class="readiness-fill ${rc}" style="width:${readinessPct(c.handoffReadiness)}"></div></div>
+      <div class="sc-meta">
+        ${c.monetization ? `<span class="sc-meta-tag">${esc(c.monetization.split('\n')[0].slice(0, 28))}</span>` : ''}
+        ${c.targetUser ? `<span class="sc-meta-tag">${esc(c.targetUser.split(' ').slice(0,4).join(' '))}</span>` : ''}
+      </div>
+      <div class="sc-actions">
+        <button class="btn btn-ghost" style="padding:0.35rem; font-size:0.7rem; min-width:32px" onclick="event.stopPropagation(); openDetail(${c.id})" title="View Details">
+          <svg style="width:16px; height:16px; vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </button>
+        <button class="btn btn-ghost" style="padding:0.35rem 0.65rem; font-size:0.7rem;" onclick="event.stopPropagation(); editCard(${c.id})">Edit</button>
+        <button class="btn btn-ghost" style="padding:0.35rem 0.65rem; font-size:0.7rem;" onclick="event.stopPropagation(); exportSingle(${c.id})">Export</button>
+        <button class="btn btn-danger" style="padding:0.35rem 0.65rem; font-size:0.7rem;" onclick="event.stopPropagation(); openDeleteModal(${c.id})">Delete</button>
+      </div>
+    `;
+    div.addEventListener('click', () => openDetail(c.id));
+    div.addEventListener('click', addRipple);
+    list.appendChild(div);
+  });
+  updateCount();
+}
+
+// ─── RENDER TEMPLATES ────────────────────────────────────────────────────────
+function renderTemplates() {
+  const grid = document.getElementById('templateGrid');
+  TEMPLATES.forEach((t, i) => {
+    const div = document.createElement('div');
+    div.className = 'template-card ripple-host';
+    div.innerHTML = `
+      <div class="template-icon">${t.icon}</div>
+      <div class="template-name">${t.name}</div>
+      <div class="template-desc">${t.desc}</div>
+      <div class="template-hint">${t.hint}</div>
+    `;
+    div.addEventListener('click', e => { addRipple(e); applyTemplate(i); });
+    grid.appendChild(div);
+  });
+}
+
+function applyTemplate(idx) {
+  const t = TEMPLATES[idx];
+  resetForm();
+  const d = t.data;
+  Object.entries(d).forEach(([k, v]) => {
+    const el = document.getElementById(k);
+    if (el) { el.value = v; if (k === 'handoffReadiness') updateRange(el); }
+  });
+  const createBtn = document.querySelectorAll('.tab-btn')[1];
+  switchTab('create', createBtn);
+  toast(`Template "${t.name}" applied`);
+}
+
+// ─── DETAIL VIEW ─────────────────────────────────────────────────────────────
+function openDetail(id) {
+  const c = cards.find(x => x.id == id);
+  if (!c) return;
+  const rc = readinessClass(c.handoffReadiness);
+  const sections = [
+    ['Target User', c.targetUser],
+    ['Problem', c.problem],
+    ['Solution', c.solution],
+    ['Core Workflow', c.coreWorkflow],
+    ['MVP Build Order', c.mvpBuild],
+    ['Differentiation', c.differentiation],
+    ['Monetization', c.monetization],
+    ['What Works Well ✓', c.worksWell],
+    ['What Doesn\'t Work ✗', c.doesntWork],
+    ['Next Expansion', c.nextExpansion],
+  ].filter(([,v]) => v && v.trim());
+
+  document.getElementById('detailContent').innerHTML = `
+    <div class="detail-name">${esc(c.projectName)}</div>
+    ${c.oneLiner ? `<div class="detail-oneliner">${esc(c.oneLiner)}</div>` : ''}
+    <div class="readiness-big">
+      <div>
+        <div class="readiness-number ${rc}" style="-webkit-text-fill-color:unset; background:none;">${c.handoffReadiness}</div>
+        <div class="readiness-label">Handoff Readiness</div>
+      </div>
+      <div class="readiness-track"><div class="readiness-track-fill ${rc}" style="width:${readinessPct(c.handoffReadiness)}"></div></div>
+    </div>
+    ${sections.map(([label, val]) => `
+      <div class="detail-section">
+        <div class="detail-section-label">${label}</div>
+        <div class="detail-section-body">${esc(val)}</div>
+      </div>
+    `).join('')}
+    <div class="detail-actions">
+      <button class="btn btn-primary ripple-host" onclick="editCard(${c.id}); closeDetail()">Edit Card</button>
+      <button class="btn btn-secondary ripple-host" onclick="exportSingle(${c.id})">Export MD</button>
+      <button class="btn btn-danger" onclick="openDeleteModal(${c.id}); closeDetail()">Delete</button>
+    </div>
+  `;
+  document.getElementById('detailView').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDetail() {
+  document.getElementById('detailView').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ─── EDIT ────────────────────────────────────────────────────────────────────
+function editCard(id) {
+  const c = cards.find(x => x.id == id);
+  if (!c) return;
+  Object.keys(c).forEach(k => {
+    const el = document.getElementById(k);
+    if (el) { el.value = c[k]; if (k === 'handoffReadiness') updateRange(el); }
+  });
+  document.getElementById('cardId').value = c.id;
+  document.getElementById('editBanner').style.display = 'block';
+  document.getElementById('editingName').textContent = c.projectName;
+  const createBtn = document.querySelectorAll('.tab-btn')[1];
+  switchTab('create', createBtn);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─── SAVE ────────────────────────────────────────────────────────────────────
+async function saveCard(btn) {
+  const name = document.getElementById('projectName').value.trim();
+  if (!name) { toast('Project name is required'); return; }
+  
+  saveHistory(); // Save state to history before modification
+  
+  const idField = document.getElementById('cardId').value;
+  const newCard = {
+    id: idField ? parseInt(idField) : Date.now(),
+    projectName: name,
+    oneLiner: document.getElementById('oneLiner').value.trim(),
+    targetUser: document.getElementById('targetUser').value.trim(),
+    problem: document.getElementById('problem').value.trim(),
+    solution: document.getElementById('solution').value.trim(),
+    coreWorkflow: document.getElementById('coreWorkflow').value.trim(),
+    mvpBuild: document.getElementById('mvpBuild').value.trim(),
+    differentiation: document.getElementById('differentiation').value.trim(),
+    monetization: document.getElementById('monetization').value.trim(),
+    worksWell: document.getElementById('worksWell').value.trim(),
+    doesntWork: document.getElementById('doesntWork').value.trim(),
+    nextExpansion: document.getElementById('nextExpansion').value.trim(),
+    handoffReadiness: document.getElementById('handoffReadiness').value,
+  };
+
+  try {
+    await dbPut(newCard); // Save to IndexedDB
+
+    // Update in-memory state
+    if (idField) {
+      const idx = cards.findIndex(c => c.id == idField);
+      if (idx > -1) cards[idx] = newCard; else cards.push(newCard);
+    } else {
+      cards.push(newCard);
+    }
+
+    resetForm();
+    renderDashboard();
+    toast(`"${name}" saved`);
+    const cardsBtn = document.querySelectorAll('.tab-btn')[0];
+    switchTab('cards', cardsBtn);
+  } catch (err) {
+    console.error("Save failed", err);
+    toast("Failed to save card.");
+  }
+}
+
+// ─── RESET FORM ──────────────────────────────────────────────────────────────
+function resetForm() {
+  ['cardId','projectName','oneLiner','targetUser','problem','solution','coreWorkflow','mvpBuild','differentiation','monetization','worksWell','doesntWork','nextExpansion'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  document.getElementById('handoffReadiness').value = 5;
+  document.getElementById('rangeVal').textContent = '5';
+  document.getElementById('editBanner').style.display = 'none';
+  document.getElementById('mdPreviewWrap').style.display = 'none';
+}
+
+// ─── DELETE ──────────────────────────────────────────────────────────────────
+function openDeleteModal(id) {
+  pendingDeleteId = id;
+  document.getElementById('deleteModal').classList.add('open');
+}
+
+async function confirmDelete() {
+  if (!pendingDeleteId) return;
+  saveHistory(); // Save state before deletion
+  
+  try {
+    await dbDelete(pendingDeleteId); // Remove from IndexedDB
+    cards = cards.filter(c => c.id != pendingDeleteId);
+    renderDashboard();
+    closeModal('deleteModal');
+    toast('Card deleted');
+    pendingDeleteId = null;
+  } catch (err) {
+    console.error("Delete failed", err);
+    toast("Failed to delete card.");
+  }
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+document.getElementById('deleteModal').addEventListener('click', e => {
+  if (e.target === document.getElementById('deleteModal')) closeModal('deleteModal');
+});
+
+// ─── MARKDOWN PREVIEW ────────────────────────────────────────────────────────
+function previewMarkdown() {
+  const wrap = document.getElementById('mdPreviewWrap');
+  const shown = wrap.style.display !== 'none';
+  if (shown) { wrap.style.display = 'none'; return; }
+  const f = {
+    projectName: document.getElementById('projectName').value,
+    oneLiner: document.getElementById('oneLiner').value,
+    targetUser: document.getElementById('targetUser').value,
+    problem: document.getElementById('problem').value,
+    solution: document.getElementById('solution').value,
+    coreWorkflow: document.getElementById('coreWorkflow').value,
+    mvpBuild: document.getElementById('mvpBuild').value,
+    differentiation: document.getElementById('differentiation').value,
+    monetization: document.getElementById('monetization').value,
+    worksWell: document.getElementById('worksWell').value,
+    doesntWork: document.getElementById('doesntWork').value,
+    nextExpansion: document.getElementById('nextExpansion').value,
+    handoffReadiness: document.getElementById('handoffReadiness').value,
+  };
+  document.getElementById('markdownOutput').textContent = buildMarkdown(f);
+  wrap.style.display = 'block';
+}
+
+function buildMarkdown(f) {
+  return `# 📦 System Card — ${f.projectName}
+
+## 1. One-Liner
+${f.oneLiner}
+
+## 2. Target User
+${f.targetUser}
+
+## 3. Problem
+${f.problem}
+
+## 4. Solution
+${f.solution}
+
+## 5. Core Workflow
+${f.coreWorkflow}
+
+## 6. MVP Build Order
+${f.mvpBuild}
+
+## 7. Differentiation
+${f.differentiation}
+
+## 8. Monetization
+${f.monetization}
+
+## 9. What Works Well
+${f.worksWell}
+
+## 10. What Doesn't Work Well
+${f.doesntWork}
+
+## 11. Next Expansion
+${f.nextExpansion}
+
+## 12. Handoff Readiness
+${f.handoffReadiness}/10`;
+}
+
+// ─── EXPORT ──────────────────────────────────────────────────────────────────
+function exportSingle(id) {
+  const c = cards.find(x => x.id == id);
+  if (!c) return;
+  download(`${c.projectName}.md`, buildMarkdown(c));
+  toast(`Exported "${c.projectName}"`);
+}
+function exportAll() {
+  if (!cards.length) { toast('No cards to export'); return; }
+  cards.forEach(c => download(`${c.projectName}.md`, buildMarkdown(c)));
+  toast(`Exported ${cards.length} card${cards.length > 1 ? 's' : ''}`);
+}
+function download(filename, content) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content], { type: 'text/markdown' }));
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+// ─── UTILITIES ───────────────────────────────────────────────────────────────
+function updateCount() {
+  document.getElementById('cardCount').textContent = cards.length;
+}
+function esc(str) {
+  return (str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timeout);
+  t._timeout = setTimeout(() => t.classList.remove('show'), 2400);
+}
+function addRipple(e) {
+  const host = e.currentTarget;
+  const r = host.getBoundingClientRect();
+  const dot = document.createElement('span');
+  dot.className = 'ripple-dot';
+  dot.style.left = (e.clientX - r.left - 30) + 'px';
+  dot.style.top = (e.clientY - r.top - 30) + 'px';
+  host.appendChild(dot);
+  dot.addEventListener('animationend', () => dot.remove());
+}
+
+// ─── KEYBOARD SHORTCUTS ───────────────────────────────────────────────────────
+document.addEventListener('keydown', (e) => {
+  if (e.metaKey || e.ctrlKey) {
+    if (e.key === 'z' && !e.shiftKey) {
+      e.preventDefault();
+      undo();
+    } else if ((e.key === 'y') || (e.key === 'z' && e.shiftKey)) {
+      e.preventDefault();
+      redo();
+    } else if (e.key === 's') {
+      e.preventDefault();
+      if (activeTab === 'create') saveCard();
+    }
+  }
+  if (e.key === 'Escape') {
+    closeDetail();
+    closeModal('deleteModal');
+    document.getElementById('infoPanel').classList.remove('open');
+  }
+});
+
+// ─── PWA SUPPORT ─────────────────────────────────────────────────────────────
+let deferredPrompt;
+const pwaInstallBtn = document.getElementById('pwaInstall');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  pwaInstallBtn.classList.add('show');
+});
+
+function installPWA() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        toast('App installed!');
+      }
+      deferredPrompt = null;
+      pwaInstallBtn.classList.remove('show');
+    });
+  }
+}
+
+// Register service worker for offline support
+if ('serviceWorker' in navigator) {
+  const swCode = `
+    const CACHE_NAME = 'system-cards-v1';
+    const urlsToCache = ['/'];
+    
+    self.addEventListener('install', event => {
+      event.waitUntil(
+        caches.open(CACHE_NAME)
+          .then(cache => cache.addAll(urlsToCache))
+      );
+      self.skipWaiting();
+    });
+    
+    self.addEventListener('fetch', event => {
+      event.respondWith(
+        caches.match(event.request)
+          .then(response => {
+            if (response) return response;
+            return fetch(event.request).catch(() => caches.match('/'));
+          })
+      );
+    });
+    
+    self.addEventListener('activate', event => {
+      event.waitUntil(self.clients.claim());
+    });
+  `;
+  
+  const blob = new Blob([swCode], { type: 'application/javascript' });
+  const swUrl = URL.createObjectURL(blob);
+  
+  navigator.serviceWorker.register(swUrl).then(() => {
+    console.log('SW registered');
+  }).catch(() => {
+    console.log('SW registration failed');
+  });
+}
+
+// Handle visibility change to sync across tabs
+document.addEventListener('visibilitychange', async () => {
+  if (!document.hidden && db) {
+    try {
+      const stored = await dbGetAll();
+      if (JSON.stringify(stored) !== JSON.stringify(cards)) {
+        cards = stored;
+        renderDashboard();
+        updateCount();
+      }
+    } catch (err) {
+      console.error("Background sync failed", err);
+    }
+  }
+});
+</script>
+
+</body>
+</html>
