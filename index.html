@@ -1361,6 +1361,196 @@ document.addEventListener('visibilitychange', async () => {
   }
 });
 </script>
+<script>
+// ─────────────────────────────────────────────────────────────────────────────
+// 📌 Publishing Engine Module — Drop‑In for System Cards
+// Adds deterministic post output generation per card + optional AI refinement
+// Works with your existing IndexedDB + UI
+// ─────────────────────────────────────────────────────────────────────────────
 
+// ---------------------
+// ✨ Configurable Settings
+// ---------------------
+const PUBLISH_PLATFORMS = {
+  reddit_startups: {
+    name: "Reddit / r/startups",
+    template: {
+      title: data => `Built a tool to ${data.problemSummary} — is this a real problem?`,
+      body: data => `
+I built this based on a clear problem:
+
+**Problem:** ${data.problem}
+
+**Solution:** ${data.solution}
+
+Demo: ${data.demoUrl}
+
+Does this solve a real pain point for ${data.audience}?
+Any honest feedback is appreciated.
+`
+    }
+  },
+  indiehackers: {
+    name: "Indie Hackers",
+    template: {
+      title: data => `Built a system for ${data.problemSummary} — trying to validate it`,
+      body: data => `
+**Problem:** ${data.problem}
+
+**Solution:** ${data.solution}
+
+Demo: ${data.demoUrl}
+
+What I’m trying to learn:
+1. Is this a recurring problem?
+2. Would you pay for this?
+3. What’s missing?
+
+Not promoting — just validating.
+`
+    }
+  },
+  linkedin: {
+    name: "LinkedIn Post",
+    template: {
+      title: data => data.projectName,
+      body: data => `
+🚀 *${data.projectName}*
+
+${data.oneLiner}
+
+Problem: ${data.problem}
+
+Solution: ${data.solution}
+
+👉 Looking for feedback from founders & builders.
+`
+    }
+  }
+};
+
+// Optional AI enhancement — provide your API key here:
+const AI_API_KEY = ""; // e.g., "" if not using AI
+const AI_MODEL = "llama3-70b-8192"; // example deterministic model
+
+// ---------------------
+// 🧠 Utility: Extract generator data from a card
+// ---------------------
+function extractGenData(card) {
+  return {
+    projectName: card.projectName || "",
+    oneLiner: card.oneLiner || "",
+    problem: card.problem || "",
+    solution: card.solution || "",
+    demoUrl: card.demoUrl || "",
+    audience: card.targetUser || "relevant users",
+    problemSummary: card.problem
+      ? card.problem.split(".")[0]
+      : ""
+  };
+}
+
+// ---------------------
+// 📦 IndexedDB Store for Generated Outputs
+// (reuses your IndexedDB instance if available)
+// ---------------------
+async function saveGenerated(platformKey, cardId, title, body) {
+  const dbName = "SystemCardsDB";
+  const storeName = "generated_posts";
+
+  const request = indexedDB.open(dbName);
+  return new Promise((resolve, reject) => {
+    request.onupgradeneeded = e => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains(storeName)) {
+        db.createObjectStore(storeName, { keyPath: "id" });
+      }
+    };
+    request.onsuccess = e => {
+      const db = e.target.result;
+      const tx = db.transaction(storeName, "readwrite");
+      const store = tx.objectStore(storeName);
+      const id = `${cardId}-${platformKey}`;
+      store.put({ id, cardId, platformKey, title, body, created: Date.now() });
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+    };
+  });
+}
+
+// ---------------------
+// 🧠 AI Enhancement (optional)
+// ---------------------
+async function refineWithAI(rawText, hint = "Refine") {
+  if (!AI_API_KEY) return rawText;
+  try {
+    const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${AI_API_KEY}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        model: AI_MODEL,
+        temperature: 0.2,
+        messages: [
+          { role: "user", content: `${hint}:\n\n${rawText}` }
+        ]
+      })
+    });
+    const json = await res.json();
+    return json.choices?.[0]?.message?.content || rawText;
+  } catch (err) {
+    console.warn("AI refine failed:", err);
+    return rawText;
+  }
+}
+
+// ---------------------
+// 🧩 UI Integration (buttons + dialogs)
+// ---------------------
+function initPublishUI() {
+  document.querySelectorAll(".system-card").forEach(cardEl => {
+    const cardId = cardEl.dataset?.id;
+    if (!cardId) return;
+
+    const container = document.createElement("div");
+    container.style.marginTop = "0.75rem";
+
+    Object.keys(PUBLISH_PLATFORMS).forEach(key => {
+      const btn = document.createElement("button");
+      btn.textContent = `Generate for ${PUBLISH_PLATFORMS[key].name}`;
+      btn.className = "btn btn-secondary";
+      btn.style.fontSize = "0.7rem";
+      btn.style.margin = "0.2rem";
+      btn.onclick = async e => {
+        e.stopPropagation();
+        const card = cards.find(c => `${c.id}` === `${cardId}`);
+        if (!card) return;
+
+        const data = extractGenData(card);
+        const template = PUBLISH_PLATFORMS[key].template;
+
+        let title = template.title(data);
+        let body = template.body(data);
+
+        // Optional AI refine step
+        title = await refineWithAI(title, "Polish this title");
+        body = await refineWithAI(body, "Polish this body for clarity");
+
+        await saveGenerated(key, card.id, title, body);
+        alert(`Generated content for ${PUBLISH_PLATFORMS[key].name}`);
+      };
+      container.appendChild(btn);
+    });
+
+    cardEl.querySelector(".sc-actions")?.appendChild(container);
+  });
+}
+
+// Run after initial render
+document.addEventListener("DOMContentLoaded", initPublishUI);
+
+</script>
 </body>
 </html>
