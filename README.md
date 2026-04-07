@@ -43,6 +43,28 @@ While many single-page tools rely on `localStorage`, System Cards is built to ho
 1. **Capacity:** It allows for hundreds of megabytes of storage, ensuring you never run out of space for your markdown content.
 2. **Performance:** Database transactions run asynchronously, meaning auto-saves and large exports will never cause the UI or animations to stutter.
 
+# AI Post Generator for System Cards
+
+## Goal
+Automatically generate polished posts for different platforms (Reddit, LinkedIn, Twitter, Indie Hackers) based on a project/product description.
+
+## Why
+- Reduce friction in handoff and publishing.
+- Keep creators focused on building new ideas rather than rewriting posts for each platform.
+- Validate ideas by sharing outputs early and consistently.
+
+## How
+1. Take project description from user.
+2. Use deterministic AI templates to generate platform-specific posts.
+3. Show auto-preview in modal.
+4. Batch generate for all platforms at once.
+5. Allow export of all generated posts as Markdown.
+6. Fully client-side, integrates into existing IndexedDB PWA.
+
+## Outcome
+- System Cards now not only document projects but generate actionable, shareable posts.
+- Helps creators move from internal validation to external signal.
+
 ## 📄 License
 
 This project is open-source and free to use or modify for your personal and professional workflow needs.
