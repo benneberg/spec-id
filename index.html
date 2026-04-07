@@ -462,7 +462,80 @@ header {
     <button class="icon-btn" id="exportBtn" title="Export all" onclick="exportAll()">↓</button>
   </div>
 </header>
+<!-- AI Post Generator Module -->
+<div id="ai-post-generator" style="display:none;">
+  <h2>AI Post Generator</h2>
+  <textarea id="ai-prompt" placeholder="Enter product/project description"></textarea>
+  <button id="generate-post">Generate Posts</button>
+  <div id="post-previews"></div>
+  <button id="export-posts">Export All</button>
+</div>
 
+<script>
+(async () => {
+  const generator = document.getElementById('ai-post-generator');
+  const promptInput = document.getElementById('ai-prompt');
+  const previewsContainer = document.getElementById('post-previews');
+
+  // Platforms to generate for
+  const platforms = ["Reddit", "LinkedIn", "Twitter", "Indie Hackers"];
+
+  // Simulated deterministic AI function (replace with real API call)
+  async function generatePosts(prompt) {
+    return platforms.map(p => ({
+      platform: p,
+      content: `Post for ${p} based on "${prompt}"\n\nTemplate applied.`
+    }));
+  }
+
+  // Show modal (you can tie to your existing modal system)
+  function showModal(html) {
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.innerHTML = `<div class="modal-content">${html}<span class="close">&times;</span></div>`;
+    document.body.appendChild(modal);
+    modal.querySelector('.close').onclick = () => modal.remove();
+  }
+
+  document.getElementById('generate-post').onclick = async () => {
+    const prompt = promptInput.value.trim();
+    if(!prompt) return alert("Enter a prompt first.");
+    previewsContainer.innerHTML = 'Generating...';
+    const posts = await generatePosts(prompt);
+    previewsContainer.innerHTML = '';
+    posts.forEach(post => {
+      const div = document.createElement('div');
+      div.className = 'post-preview';
+      div.innerHTML = `
+        <h4>${post.platform}</h4>
+        <pre>${post.content}</pre>
+        <button class="preview-btn">Preview</button>
+      `;
+      div.querySelector('.preview-btn').onclick = () => showModal(`<pre>${post.content}</pre>`);
+      previewsContainer.appendChild(div);
+    });
+    // Attach batch export
+    document.getElementById('export-posts').onclick = () => {
+      const blob = new Blob([posts.map(p=>`# ${p.platform}\n\n${p.content}\n`).join('\n')], {type:'text/markdown'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'ai_posts.md';
+      a.click();
+      URL.revokeObjectURL(url);
+    };
+  };
+})();
+</script>
+
+<style>
+.post-preview { border:1px solid #ccc; padding:8px; margin:6px 0; border-radius:4px; }
+.modal { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.6); display:flex; justify-content:center; align-items:center; z-index:9999; }
+.modal-content { background:#fff; padding:20px; border-radius:8px; max-width:600px; max-height:80vh; overflow:auto; position:relative; }
+.modal-content .close { position:absolute; top:8px; right:12px; cursor:pointer; font-size:24px; }
+</style>
+
+  
 <div class="info-panel" id="infoPanel">
   <div class="info-header">
     <h3>System Card Guide</h3>
