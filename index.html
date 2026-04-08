@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -32,110 +33,110 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'DM Mono', monospace;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100dvh;
-  overflow-x: hidden;
-  -webkit-tap-highlight-color: transparent;
+font-family: ‘DM Mono’, monospace;
+background: var(–bg);
+color: var(–text);
+min-height: 100dvh;
+overflow-x: hidden;
+-webkit-tap-highlight-color: transparent;
 }
 
 /* ── BACKGROUND ── */
 .bg-layer {
-  position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(124,58,237,0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(14,165,233,0.14) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 40% at 60% 40%, rgba(16,185,129,0.08) 0%, transparent 50%),
-    #050a12;
+position: fixed; inset: 0; z-index: 0; pointer-events: none;
+background:
+radial-gradient(ellipse 80% 60% at 20% 10%, rgba(124,58,237,0.18) 0%, transparent 60%),
+radial-gradient(ellipse 60% 50% at 80% 80%, rgba(14,165,233,0.14) 0%, transparent 55%),
+radial-gradient(ellipse 50% 40% at 60% 40%, rgba(16,185,129,0.08) 0%, transparent 50%),
+#050a12;
 }
 .bg-grain {
-  position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 200px;
+position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.035;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 200 200’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘n’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23n)’/%3E%3C/svg%3E”);
+background-size: 200px;
 }
 
 /* ── GLASS MIXIN ── */
 .glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid var(--glass-border);
+background: var(–glass-bg);
+backdrop-filter: blur(24px) saturate(180%);
+-webkit-backdrop-filter: blur(24px) saturate(180%);
+border: 1px solid var(–glass-border);
 }
 
 /* ── HEADER ── */
 header {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(5,10,18,0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--glass-border);
-  padding: 0 1.25rem;
-  height: 56px;
-  display: flex; align-items: center; justify-content: space-between;
+position: sticky; top: 0; z-index: 100;
+background: rgba(5,10,18,0.7);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border-bottom: 1px solid var(–glass-border);
+padding: 0 1.25rem;
+height: 56px;
+display: flex; align-items: center; justify-content: space-between;
 }
 .header-logo {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: 1rem;
-  letter-spacing: -0.02em;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+font-family: ‘Syne’, sans-serif;
+font-weight: 800;
+font-size: 1rem;
+letter-spacing: -0.02em;
+background: linear-gradient(135deg, var(–accent), var(–accent2));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
 }
 .header-actions { display: flex; gap: 0.5rem; align-items: center; }
 .icon-btn {
-  width: 36px; height: 36px;
-  border-radius: 10px;
-  border: 1px solid var(--glass-border);
-  background: var(--glass-bg);
-  color: var(--muted);
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s var(--ease-smooth);
-  font-size: 0.85rem;
-  font-family: 'Syne', sans-serif;
-  font-weight: 600;
+width: 36px; height: 36px;
+border-radius: 10px;
+border: 1px solid var(–glass-border);
+background: var(–glass-bg);
+color: var(–muted);
+cursor: pointer;
+display: flex; align-items: center; justify-content: center;
+transition: all 0.2s var(–ease-smooth);
+font-size: 0.85rem;
+font-family: ‘Syne’, sans-serif;
+font-weight: 600;
 }
-.icon-btn:hover { background: var(--glass-hover); color: var(--text); border-color: rgba(255,255,255,0.2); transform: scale(1.05); }
-.icon-btn.active { background: rgba(125,211,252,0.15); border-color: rgba(125,211,252,0.4); color: var(--accent); }
+.icon-btn:hover { background: var(–glass-hover); color: var(–text); border-color: rgba(255,255,255,0.2); transform: scale(1.05); }
+.icon-btn.active { background: rgba(125,211,252,0.15); border-color: rgba(125,211,252,0.4); color: var(–accent); }
 .icon-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
 /* ── NAV TABS ── */
 .nav-tabs {
-  display: flex; gap: 2px; padding: 0.75rem 1.25rem 0; position: relative; z-index: 1;
+display: flex; gap: 2px; padding: 0.75rem 1.25rem 0; position: relative; z-index: 1;
 }
 .tab-btn {
-  font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.78rem;
-  letter-spacing: 0.04em; text-transform: uppercase;
-  padding: 0.5rem 1rem; border-radius: 10px 10px 0 0; border: 1px solid transparent;
-  border-bottom: none; background: transparent; color: var(--subtle);
-  cursor: pointer; transition: all 0.2s var(--ease-smooth); position: relative;
+font-family: ‘Syne’, sans-serif; font-weight: 600; font-size: 0.78rem;
+letter-spacing: 0.04em; text-transform: uppercase;
+padding: 0.5rem 1rem; border-radius: 10px 10px 0 0; border: 1px solid transparent;
+border-bottom: none; background: transparent; color: var(–subtle);
+cursor: pointer; transition: all 0.2s var(–ease-smooth); position: relative;
 }
-.tab-btn:hover { color: var(--muted); }
+.tab-btn:hover { color: var(–muted); }
 .tab-btn.active {
-  background: var(--glass-bg); backdrop-filter: blur(24px); border-color: var(--glass-border);
-  border-bottom-color: transparent; color: var(--text);
+background: var(–glass-bg); backdrop-filter: blur(24px); border-color: var(–glass-border);
+border-bottom-color: transparent; color: var(–text);
 }
 
 /* ── MAIN CONTENT ── */
 .content { position: relative; z-index: 1; padding: 0 1.25rem 2rem; }
 
 .tab-panel { display: none; }
-.tab-panel.active { display: block; animation: fadeSlideUp 0.3s var(--ease-smooth); }
+.tab-panel.active { display: block; animation: fadeSlideUp 0.3s var(–ease-smooth); }
 
 @keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+from { opacity: 0; transform: translateY(8px); }
+to { opacity: 1; transform: translateY(0); }
 }
 
 /* ── SECTION DIVIDER ── */
 .panel-wrap {
-  border: 1px solid var(--glass-border); border-top: none;
-  border-radius: 0 var(--card-radius) var(--card-radius) var(--card-radius);
-  background: var(--glass-bg); backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px); padding: 1.5rem;
+border: 1px solid var(–glass-border); border-top: none;
+border-radius: 0 var(–card-radius) var(–card-radius) var(–card-radius);
+background: var(–glass-bg); backdrop-filter: blur(24px);
+-webkit-backdrop-filter: blur(24px); padding: 1.5rem;
 }
 
 /* ── FORM ── */
@@ -145,53 +146,53 @@ header {
 
 .field { display: flex; flex-direction: column; gap: 0.35rem; }
 .field label {
-  font-family: 'Syne', sans-serif; font-size: 0.68rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);
+font-family: ‘Syne’, sans-serif; font-size: 0.68rem; font-weight: 700;
+text-transform: uppercase; letter-spacing: 0.08em; color: var(–muted);
 }
 .field input, .field textarea, .field select {
-  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 10px; color: var(--text); font-family: 'DM Mono', monospace;
-  font-size: 0.82rem; padding: 0.6rem 0.8rem; transition: all 0.2s var(--ease-smooth);
-  outline: none; width: 100%; resize: vertical;
+background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+border-radius: 10px; color: var(–text); font-family: ‘DM Mono’, monospace;
+font-size: 0.82rem; padding: 0.6rem 0.8rem; transition: all 0.2s var(–ease-smooth);
+outline: none; width: 100%; resize: vertical;
 }
 .field input:focus, .field textarea:focus {
-  background: rgba(255,255,255,0.07); border-color: rgba(125,211,252,0.4);
-  box-shadow: 0 0 0 3px rgba(125,211,252,0.08);
+background: rgba(255,255,255,0.07); border-color: rgba(125,211,252,0.4);
+box-shadow: 0 0 0 3px rgba(125,211,252,0.08);
 }
 .field textarea { min-height: 70px; }
-.field input[type="range"] {
-  padding: 0; accent-color: var(--accent); height: 4px; cursor: pointer;
-  border: none; background: transparent;
+.field input[type=“range”] {
+padding: 0; accent-color: var(–accent); height: 4px; cursor: pointer;
+border: none; background: transparent;
 }
 .range-display { display: flex; align-items: center; gap: 0.75rem; }
 .range-value {
-  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem;
-  color: var(--accent); min-width: 28px;
+font-family: ‘Syne’, sans-serif; font-weight: 700; font-size: 1.1rem;
+color: var(–accent); min-width: 28px;
 }
 
 /* ── BUTTONS ── */
 .btn {
-  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.78rem;
-  letter-spacing: 0.04em; text-transform: uppercase; border: none;
-  border-radius: 10px; padding: 0.65rem 1.25rem; cursor: pointer;
-  transition: all 0.22s var(--ease-spring); display: inline-flex;
-  align-items: center; gap: 0.4rem; justify-content: center;
+font-family: ‘Syne’, sans-serif; font-weight: 700; font-size: 0.78rem;
+letter-spacing: 0.04em; text-transform: uppercase; border: none;
+border-radius: 10px; padding: 0.65rem 1.25rem; cursor: pointer;
+transition: all 0.22s var(–ease-spring); display: inline-flex;
+align-items: center; gap: 0.4rem; justify-content: center;
 }
 .btn:active { transform: scale(0.96); }
 .btn-primary {
-  background: linear-gradient(135deg, rgba(125,211,252,0.25), rgba(196,181,253,0.2));
-  border: 1px solid rgba(125,211,252,0.35); color: var(--accent);
+background: linear-gradient(135deg, rgba(125,211,252,0.25), rgba(196,181,253,0.2));
+border: 1px solid rgba(125,211,252,0.35); color: var(–accent);
 }
 .btn-primary:hover {
-  background: linear-gradient(135deg, rgba(125,211,252,0.35), rgba(196,181,253,0.3));
-  transform: translateY(-1px); box-shadow: 0 4px 20px rgba(125,211,252,0.15);
+background: linear-gradient(135deg, rgba(125,211,252,0.35), rgba(196,181,253,0.3));
+transform: translateY(-1px); box-shadow: 0 4px 20px rgba(125,211,252,0.15);
 }
-.btn-secondary { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: var(--muted); }
-.btn-secondary:hover { background: rgba(255,255,255,0.09); color: var(--text); }
-.btn-danger { background: rgba(248,113,113,0.12); border: 1px solid rgba(248,113,113,0.25); color: var(--danger); }
+.btn-secondary { background: rgba(255,255,255,0.05); border: 1px solid var(–glass-border); color: var(–muted); }
+.btn-secondary:hover { background: rgba(255,255,255,0.09); color: var(–text); }
+.btn-danger { background: rgba(248,113,113,0.12); border: 1px solid rgba(248,113,113,0.25); color: var(–danger); }
 .btn-danger:hover { background: rgba(248,113,113,0.2); }
-.btn-ghost { background: transparent; border: 1px solid transparent; color: var(--muted); }
-.btn-ghost:hover { background: var(--glass-bg); border-color: var(--glass-border); color: var(--text); }
+.btn-ghost { background: transparent; border: 1px solid transparent; color: var(–muted); }
+.btn-ghost:hover { background: var(–glass-bg); border-color: var(–glass-border); color: var(–text); }
 
 .btn-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
 
@@ -199,252 +200,511 @@ header {
 .cards-grid { display: grid; gap: 0.75rem; margin-top: 1rem; }
 
 .system-card {
-  background: var(--glass-bg); border: 1px solid var(--glass-border);
-  border-radius: var(--card-radius); padding: 1.1rem 1.2rem; cursor: pointer;
-  transition: all 0.25s var(--ease-smooth); position: relative; overflow: hidden;
+background: var(–glass-bg); border: 1px solid var(–glass-border);
+border-radius: var(–card-radius); padding: 1.1rem 1.2rem; cursor: pointer;
+transition: all 0.25s var(–ease-smooth); position: relative; overflow: hidden;
 }
 .system-card::before {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(125,211,252,0.04), rgba(196,181,253,0.03));
-  opacity: 0; transition: opacity 0.25s;
+content: ‘’; position: absolute; inset: 0;
+background: linear-gradient(135deg, rgba(125,211,252,0.04), rgba(196,181,253,0.03));
+opacity: 0; transition: opacity 0.25s;
 }
 .system-card:hover { border-color: rgba(125,211,252,0.25); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
 .system-card:hover::before { opacity: 1; }
 
 .sc-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.75rem; }
-.sc-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--text); line-height: 1.3; }
+.sc-name { font-family: ‘Syne’, sans-serif; font-weight: 700; font-size: 0.95rem; color: var(–text); line-height: 1.3; }
 .sc-badge {
-  flex-shrink: 0; font-family: 'Syne', sans-serif; font-size: 0.65rem;
-  font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 6px; border: 1px solid;
+flex-shrink: 0; font-family: ‘Syne’, sans-serif; font-size: 0.65rem;
+font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 6px; border: 1px solid;
 }
-.badge-high { background: rgba(110,231,183,0.1); border-color: rgba(110,231,183,0.3); color: var(--accent3); }
-.badge-mid { background: rgba(125,211,252,0.1); border-color: rgba(125,211,252,0.3); color: var(--accent); }
-.badge-low { background: rgba(248,113,113,0.1); border-color: rgba(248,113,113,0.3); color: var(--danger); }
+.badge-high { background: rgba(110,231,183,0.1); border-color: rgba(110,231,183,0.3); color: var(–accent3); }
+.badge-mid { background: rgba(125,211,252,0.1); border-color: rgba(125,211,252,0.3); color: var(–accent); }
+.badge-low { background: rgba(248,113,113,0.1); border-color: rgba(248,113,113,0.3); color: var(–danger); }
 
-.sc-oneliner { font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; font-style: italic; line-height: 1.4; }
+.sc-oneliner { font-size: 0.75rem; color: var(–muted); margin-top: 0.3rem; font-style: italic; line-height: 1.4; }
 .sc-meta { display: flex; gap: 0.75rem; margin-top: 0.75rem; flex-wrap: wrap; }
 .sc-meta-tag {
-  font-size: 0.65rem; color: var(--subtle); background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.07); padding: 0.15rem 0.5rem; border-radius: 5px;
+font-size: 0.65rem; color: var(–subtle); background: rgba(255,255,255,0.04);
+border: 1px solid rgba(255,255,255,0.07); padding: 0.15rem 0.5rem; border-radius: 5px;
 }
 .sc-actions {
-  display: flex; gap: 0.4rem; margin-top: 0.85rem; opacity: 0;
-  transform: translateY(4px); transition: all 0.2s var(--ease-smooth); flex-wrap: wrap;
+display: flex; gap: 0.4rem; margin-top: 0.85rem; opacity: 0;
+transform: translateY(4px); transition: all 0.2s var(–ease-smooth); flex-wrap: wrap;
 }
 .system-card:hover .sc-actions { opacity: 1; transform: translateY(0); }
 
 /* readiness bar */
 .readiness-bar { height: 2px; background: rgba(255,255,255,0.07); border-radius: 2px; margin-top: 0.85rem; overflow: hidden; }
-.readiness-fill { height: 100%; border-radius: 2px; transition: width 0.6s var(--ease-smooth); }
+.readiness-fill { height: 100%; border-radius: 2px; transition: width 0.6s var(–ease-smooth); }
 
 /* ── MODAL ── */
 .modal-backdrop {
-  position: fixed; inset: 0; z-index: 200; background: rgba(5,10,18,0.8);
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  display: flex; align-items: flex-end; justify-content: center;
-  opacity: 0; pointer-events: none; transition: opacity 0.25s var(--ease-smooth);
+position: fixed; inset: 0; z-index: 200; background: rgba(5,10,18,0.8);
+backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+display: flex; align-items: flex-end; justify-content: center;
+opacity: 0; pointer-events: none; transition: opacity 0.25s var(–ease-smooth);
 }
 .modal-backdrop.open { opacity: 1; pointer-events: all; }
 .modal {
-  background: rgba(10,18,30,0.95); backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px); border: 1px solid var(--glass-border);
-  border-bottom: none; border-radius: 24px 24px 0 0; width: 100%;
-  max-width: 640px; max-height: 92dvh; overflow-y: auto; padding: 1.5rem;
-  transform: translateY(100%); transition: transform 0.35s var(--ease-spring);
-  scrollbar-width: thin; scrollbar-color: var(--glass-border) transparent;
+background: rgba(10,18,30,0.95); backdrop-filter: blur(40px);
+-webkit-backdrop-filter: blur(40px); border: 1px solid var(–glass-border);
+border-bottom: none; border-radius: 24px 24px 0 0; width: 100%;
+max-width: 640px; max-height: 92dvh; overflow-y: auto; padding: 1.5rem;
+transform: translateY(100%); transition: transform 0.35s var(–ease-spring);
+scrollbar-width: thin; scrollbar-color: var(–glass-border) transparent;
 }
 .modal-backdrop.open .modal { transform: translateY(0); }
-.modal-handle { width: 36px; height: 4px; background: var(--glass-border); border-radius: 2px; margin: 0 auto 1.25rem; }
+.modal-handle { width: 36px; height: 4px; background: var(–glass-border); border-radius: 2px; margin: 0 auto 1.25rem; }
 .modal-title {
-  font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.15rem;
-  margin-bottom: 1.25rem; background: linear-gradient(135deg, var(--text), var(--muted));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+font-family: ‘Syne’, sans-serif; font-weight: 800; font-size: 1.15rem;
+margin-bottom: 1.25rem; background: linear-gradient(135deg, var(–text), var(–muted));
+-webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 
 /* ── INFO PANEL (GUIDE) ── */
 .info-panel {
-  position: fixed; top: 0; right: -420px; width: 100%; max-width: 400px; height: 100dvh;
-  background: rgba(5,10,18,0.92); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-  border-left: 1px solid var(--glass-border); padding: 2rem 1.5rem; overflow-y: auto;
-  transition: right 0.4s var(--ease-spring); z-index: 1001;
+position: fixed; top: 0; right: -420px; width: 100%; max-width: 400px; height: 100dvh;
+background: rgba(5,10,18,0.92); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+border-left: 1px solid var(–glass-border); padding: 2rem 1.5rem; overflow-y: auto;
+transition: right 0.4s var(–ease-spring); z-index: 1001;
 }
 .info-panel.open { right: 0; box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
 .info-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
-.info-header h3 { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; margin: 0; color: var(--text); }
-.info-panel h4 { font-family: 'Syne', sans-serif; font-size: 0.85rem; margin: 1.5rem 0 0.5rem; color: var(--accent); }
-.info-panel p, .info-panel li { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+.info-header h3 { font-family: ‘Syne’, sans-serif; font-size: 1.2rem; font-weight: 800; margin: 0; color: var(–text); }
+.info-panel h4 { font-family: ‘Syne’, sans-serif; font-size: 0.85rem; margin: 1.5rem 0 0.5rem; color: var(–accent); }
+.info-panel p, .info-panel li { font-size: 0.8rem; color: var(–muted); line-height: 1.6; }
 .info-panel ul { padding-left: 1.2rem; margin-top: 0.5rem; }
 .info-panel li { margin-bottom: 0.5rem; }
 
 /* ── DETAIL VIEW ── */
 .detail-view {
-  position: fixed; inset: 0; z-index: 150; background: rgba(5,10,18,0.92);
-  backdrop-filter: blur(16px); overflow-y: auto; transform: translateX(100%);
-  transition: transform 0.35s var(--ease-spring); padding: 1.5rem;
-  scrollbar-width: thin; scrollbar-color: var(--glass-border) transparent;
+position: fixed; inset: 0; z-index: 150; background: rgba(5,10,18,0.92);
+backdrop-filter: blur(16px); overflow-y: auto; transform: translateX(100%);
+transition: transform 0.35s var(–ease-spring); padding: 1.5rem;
+scrollbar-width: thin; scrollbar-color: var(–glass-border) transparent;
 }
 .detail-view.open { transform: translateX(0); }
 .detail-back {
-  display: inline-flex; align-items: center; gap: 0.4rem; font-family: 'Syne', sans-serif;
-  font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
-  color: var(--muted); background: transparent; border: none; cursor: pointer;
-  padding: 0.5rem 0; margin-bottom: 1.25rem; transition: color 0.2s;
+display: inline-flex; align-items: center; gap: 0.4rem; font-family: ‘Syne’, sans-serif;
+font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+color: var(–muted); background: transparent; border: none; cursor: pointer;
+padding: 0.5rem 0; margin-bottom: 1.25rem; transition: color 0.2s;
 }
-.detail-back:hover { color: var(--text); }
+.detail-back:hover { color: var(–text); }
 .detail-name {
-  font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.6rem; line-height: 1.1;
-  margin-bottom: 0.4rem; background: linear-gradient(135deg, var(--text) 60%, var(--muted));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+font-family: ‘Syne’, sans-serif; font-weight: 800; font-size: 1.6rem; line-height: 1.1;
+margin-bottom: 0.4rem; background: linear-gradient(135deg, var(–text) 60%, var(–muted));
+-webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-.detail-oneliner { color: var(--muted); font-style: italic; margin-bottom: 1.5rem; font-size: 0.85rem; }
+.detail-oneliner { color: var(–muted); font-style: italic; margin-bottom: 1.5rem; font-size: 0.85rem; }
 .detail-section {
-  margin-bottom: 1.25rem; padding: 1rem 1.1rem; background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07); border-radius: 12px;
+margin-bottom: 1.25rem; padding: 1rem 1.1rem; background: rgba(255,255,255,0.03);
+border: 1px solid rgba(255,255,255,0.07); border-radius: 12px;
 }
 .detail-section-label {
-  font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.5rem;
+font-family: ‘Syne’, sans-serif; font-size: 0.65rem; font-weight: 700;
+text-transform: uppercase; letter-spacing: 0.1em; color: var(–muted); margin-bottom: 0.5rem;
 }
-.detail-section-body { font-size: 0.82rem; color: var(--text); line-height: 1.6; white-space: pre-wrap; }
+.detail-section-body { font-size: 0.82rem; color: var(–text); line-height: 1.6; white-space: pre-wrap; }
 .detail-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.5rem; }
 .readiness-big {
-  display: flex; align-items: center; gap: 1rem; padding: 1rem 1.1rem;
-  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 12px; margin-bottom: 1.25rem;
+display: flex; align-items: center; gap: 1rem; padding: 1rem 1.1rem;
+background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+border-radius: 12px; margin-bottom: 1.25rem;
 }
-.readiness-number { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2rem; line-height: 1; }
-.readiness-label { font-size: 0.72rem; color: var(--muted); }
+.readiness-number { font-family: ‘Syne’, sans-serif; font-weight: 800; font-size: 2rem; line-height: 1; }
+.readiness-label { font-size: 0.72rem; color: var(–muted); }
 .readiness-track { flex: 1; height: 6px; background: rgba(255,255,255,0.07); border-radius: 6px; overflow: hidden; }
-.readiness-track-fill { height: 100%; border-radius: 6px; transition: width 0.8s var(--ease-smooth) 0.2s; }
+.readiness-track-fill { height: 100%; border-radius: 6px; transition: width 0.8s var(–ease-smooth) 0.2s; }
 
 /* ── EMPTY STATE ── */
-.empty-state { text-align: center; padding: 3rem 1.5rem; color: var(--subtle); }
+.empty-state { text-align: center; padding: 3rem 1.5rem; color: var(–subtle); }
 .empty-state .big-icon { font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.5; }
-.empty-state h3 { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--muted); margin-bottom: 0.4rem; }
+.empty-state h3 { font-family: ‘Syne’, sans-serif; font-weight: 700; color: var(–muted); margin-bottom: 0.4rem; }
 .empty-state p { font-size: 0.8rem; }
 
 /* ── TEMPLATES TAB ── */
 .templates-grid { display: grid; gap: 0.75rem; }
 .template-card {
-  background: var(--glass-bg); border: 1px solid var(--glass-border);
-  border-radius: var(--card-radius); padding: 1.1rem 1.2rem; cursor: pointer;
-  transition: all 0.25s var(--ease-smooth); position: relative; overflow: hidden;
+background: var(–glass-bg); border: 1px solid var(–glass-border);
+border-radius: var(–card-radius); padding: 1.1rem 1.2rem; cursor: pointer;
+transition: all 0.25s var(–ease-smooth); position: relative; overflow: hidden;
 }
 .template-card::after {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent2), transparent);
-  opacity: 0; transition: opacity 0.25s;
+content: ‘’; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+background: linear-gradient(90deg, transparent, var(–accent2), transparent);
+opacity: 0; transition: opacity 0.25s;
 }
 .template-card:hover { border-color: rgba(196,181,253,0.3); transform: translateY(-2px); }
 .template-card:hover::after { opacity: 1; }
 .template-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
-.template-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.25rem; }
-.template-desc { font-size: 0.72rem; color: var(--muted); line-height: 1.5; }
-.template-hint { font-size: 0.65rem; color: var(--subtle); margin-top: 0.5rem; }
+.template-name { font-family: ‘Syne’, sans-serif; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.25rem; }
+.template-desc { font-size: 0.72rem; color: var(–muted); line-height: 1.5; }
+.template-hint { font-size: 0.65rem; color: var(–subtle); margin-top: 0.5rem; }
 
 /* ── SEARCH ── */
 .search-wrap { position: relative; margin-bottom: 1rem; }
 .search-wrap input {
-  width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 10px; color: var(--text); font-family: 'DM Mono', monospace; font-size: 0.82rem;
-  padding: 0.6rem 0.8rem 0.6rem 2.2rem; transition: all 0.2s; outline: none;
+width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+border-radius: 10px; color: var(–text); font-family: ‘DM Mono’, monospace; font-size: 0.82rem;
+padding: 0.6rem 0.8rem 0.6rem 2.2rem; transition: all 0.2s; outline: none;
 }
 .search-wrap input:focus { border-color: rgba(125,211,252,0.4); background: rgba(255,255,255,0.07); }
 .search-icon {
-  position: absolute; left: 0.7rem; top: 50%; transform: translateY(-50%);
-  color: var(--subtle); font-size: 0.85rem; pointer-events: none;
+position: absolute; left: 0.7rem; top: 50%; transform: translateY(-50%);
+color: var(–subtle); font-size: 0.85rem; pointer-events: none;
 }
 
 /* ── TOAST ── */
 .toast {
-  position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%) translateY(100px);
-  z-index: 999; background: rgba(10,18,30,0.95); backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border); border-radius: 10px; padding: 0.6rem 1.1rem;
-  font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--text);
-  transition: transform 0.35s var(--ease-spring); white-space: nowrap;
+position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%) translateY(100px);
+z-index: 999; background: rgba(10,18,30,0.95); backdrop-filter: blur(20px);
+border: 1px solid var(–glass-border); border-radius: 10px; padding: 0.6rem 1.1rem;
+font-family: ‘Syne’, sans-serif; font-size: 0.78rem; font-weight: 600; color: var(–text);
+transition: transform 0.35s var(–ease-spring); white-space: nowrap;
 }
 .toast.show { transform: translateX(-50%) translateY(0); }
 
 /* ── MARKDOWN PREVIEW ── */
 .md-preview {
-  background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px;
-  padding: 1rem; font-size: 0.76rem; line-height: 1.7; color: var(--muted);
-  white-space: pre-wrap; max-height: 240px; overflow-y: auto; margin-top: 0.5rem;
-  font-family: 'DM Mono', monospace; scrollbar-width: thin; scrollbar-color: var(--glass-border) transparent;
+background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px;
+padding: 1rem; font-size: 0.76rem; line-height: 1.7; color: var(–muted);
+white-space: pre-wrap; max-height: 240px; overflow-y: auto; margin-top: 0.5rem;
+font-family: ‘DM Mono’, monospace; scrollbar-width: thin; scrollbar-color: var(–glass-border) transparent;
 }
 
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: var(–glass-border); border-radius: 4px; }
 
 /* ── DIVIDER ── */
-.divider { height: 1px; background: var(--glass-border); margin: 1.25rem 0; }
+.divider { height: 1px; background: var(–glass-border); margin: 1.25rem 0; }
 
 /* ── COUNT BADGE ── */
 .count-badge {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 18px; height: 18px; background: rgba(125,211,252,0.15); border: 1px solid rgba(125,211,252,0.25);
-  border-radius: 5px; font-family: 'Syne', sans-serif; font-size: 0.6rem; font-weight: 800;
-  color: var(--accent); margin-left: 0.35rem;
+display: inline-flex; align-items: center; justify-content: center;
+width: 18px; height: 18px; background: rgba(125,211,252,0.15); border: 1px solid rgba(125,211,252,0.25);
+border-radius: 5px; font-family: ‘Syne’, sans-serif; font-size: 0.6rem; font-weight: 800;
+color: var(–accent); margin-left: 0.35rem;
 }
 
 /* ── RIPPLE ── */
 @keyframes ripple { from { transform: scale(0); opacity: 0.4; } to { transform: scale(4); opacity: 0; } }
 .ripple-host { position: relative; overflow: hidden; }
 .ripple-dot {
-  position: absolute; border-radius: 50%; width: 60px; height: 60px;
-  background: rgba(255,255,255,0.15); pointer-events: none;
-  animation: ripple 0.5s ease-out forwards; transform-origin: center;
+position: absolute; border-radius: 50%; width: 60px; height: 60px;
+background: rgba(255,255,255,0.15); pointer-events: none;
+animation: ripple 0.5s ease-out forwards; transform-origin: center;
 }
 
 /* ── READINESS COLOR ── */
-.r-high { background: linear-gradient(90deg, var(--accent3), #34d399); color: var(--accent3); }
-.r-mid { background: linear-gradient(90deg, var(--accent), #38bdf8); color: var(--accent); }
-.r-low { background: linear-gradient(90deg, var(--danger), #fb923c); color: var(--danger); }
+.r-high { background: linear-gradient(90deg, var(–accent3), #34d399); color: var(–accent3); }
+.r-mid { background: linear-gradient(90deg, var(–accent), #38bdf8); color: var(–accent); }
+.r-low { background: linear-gradient(90deg, var(–danger), #fb923c); color: var(–danger); }
 
 /* ── UNDO/REDO BAR ── */
 .history-bar {
-  position: fixed; bottom: 0; left: 0; right: 0;
-  background: rgba(5,10,18,0.9);
-  backdrop-filter: blur(20px);
-  border-top: 1px solid var(--glass-border);
-  padding: 0.75rem 1.25rem;
-  display: flex; justify-content: center; gap: 1rem;
-  z-index: 90;
-  transform: translateY(100%);
-  transition: transform 0.3s var(--ease-smooth);
+position: fixed; bottom: 0; left: 0; right: 0;
+background: rgba(5,10,18,0.9);
+backdrop-filter: blur(20px);
+border-top: 1px solid var(–glass-border);
+padding: 0.75rem 1.25rem;
+display: flex; justify-content: center; gap: 1rem;
+z-index: 90;
+transform: translateY(100%);
+transition: transform 0.3s var(–ease-smooth);
 }
 .history-bar.visible { transform: translateY(0); }
 .history-bar .btn { padding: 0.5rem 1rem; font-size: 0.7rem; }
 
 /* ── PWA INSTALL BUTTON ── */
 .pwa-install {
-  position: fixed; bottom: 80px; right: 1.5rem;
-  background: linear-gradient(135deg, rgba(125,211,252,0.25), rgba(196,181,253,0.2));
-  border: 1px solid rgba(125,211,252,0.35);
-  color: var(--accent);
-  padding: 0.75rem 1.25rem;
-  border-radius: 12px;
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
-  font-size: 0.78rem;
-  cursor: pointer;
-  transform: translateY(200%);
-  transition: transform 0.4s var(--ease-spring);
-  z-index: 95;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+position: fixed; bottom: 80px; right: 1.5rem;
+background: linear-gradient(135deg, rgba(125,211,252,0.25), rgba(196,181,253,0.2));
+border: 1px solid rgba(125,211,252,0.35);
+color: var(–accent);
+padding: 0.75rem 1.25rem;
+border-radius: 12px;
+font-family: ‘Syne’, sans-serif;
+font-weight: 700;
+font-size: 0.78rem;
+cursor: pointer;
+transform: translateY(200%);
+transition: transform 0.4s var(–ease-spring);
+z-index: 95;
+box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 .pwa-install.show { transform: translateY(0); }
 
 @media (min-width: 640px) {
-  .cards-grid, .templates-grid { grid-template-columns: 1fr 1fr; }
-  .panel-wrap { padding: 2rem; }
+.cards-grid, .templates-grid { grid-template-columns: 1fr 1fr; }
+.panel-wrap { padding: 2rem; }
 }
 @media (min-width: 1024px) {
-  .content { max-width: 960px; margin: 0 auto; }
-  .cards-grid, .templates-grid { grid-template-columns: 1fr 1fr 1fr; }
+.content { max-width: 960px; margin: 0 auto; }
+.cards-grid, .templates-grid { grid-template-columns: 1fr 1fr 1fr; }
 }
+
+/* ── TRANSMITTER ENGINE STYLES ── */
+.tx-header {
+display: flex; align-items: center; justify-content: space-between;
+margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.75rem;
+}
+.tx-title {
+font-family: ‘Syne’, sans-serif; font-weight: 800; font-size: 1.1rem;
+background: linear-gradient(135deg, var(–accent), var(–accent2));
+-webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.tx-subtitle { font-size: 0.72rem; color: var(–subtle); margin-top: 0.15rem; }
+
+.tx-ai-toggle {
+display: flex; align-items: center; gap: 0.6rem;
+font-family: ‘Syne’, sans-serif; font-size: 0.7rem; font-weight: 700;
+text-transform: uppercase; letter-spacing: 0.06em;
+}
+.toggle-switch {
+position: relative; width: 36px; height: 20px; cursor: pointer;
+}
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-track {
+position: absolute; inset: 0; border-radius: 10px;
+background: rgba(255,255,255,0.08); border: 1px solid var(–glass-border);
+transition: all 0.25s var(–ease-smooth);
+}
+.toggle-thumb {
+position: absolute; top: 3px; left: 3px; width: 14px; height: 14px;
+border-radius: 50%; background: var(–subtle);
+transition: all 0.25s var(–ease-spring);
+}
+.toggle-switch input:checked ~ .toggle-track {
+background: rgba(125,211,252,0.2); border-color: rgba(125,211,252,0.4);
+}
+.toggle-switch input:checked ~ .toggle-thumb {
+left: 19px; background: var(–accent);
+box-shadow: 0 0 8px rgba(125,211,252,0.5);
+}
+
+/* Project selector */
+.tx-project-select {
+background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12);
+border-radius: 12px; color: var(–text); font-family: ‘DM Mono’, monospace;
+font-size: 0.82rem; padding: 0.7rem 1rem; width: 100%; outline: none;
+transition: all 0.2s var(–ease-smooth); cursor: pointer; margin-bottom: 1.25rem;
+}
+.tx-project-select:focus { border-color: rgba(125,211,252,0.4); background: rgba(255,255,255,0.07); }
+
+/* Flow steps */
+.tx-steps { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.tx-step {
+border: 1px solid var(–glass-border); border-radius: 16px;
+background: var(–glass-bg); overflow: hidden;
+transition: all 0.3s var(–ease-smooth);
+}
+.tx-step.locked { opacity: 0.4; pointer-events: none; }
+.tx-step.complete { border-color: rgba(110,231,183,0.3); }
+
+.tx-step-header {
+display: flex; align-items: center; gap: 0.75rem;
+padding: 1rem 1.25rem; cursor: pointer;
+}
+.tx-step-num {
+width: 26px; height: 26px; border-radius: 50%;
+background: rgba(255,255,255,0.06); border: 1px solid var(–glass-border);
+font-family: ‘Syne’, sans-serif; font-weight: 700; font-size: 0.72rem;
+display: flex; align-items: center; justify-content: center; color: var(–subtle);
+flex-shrink: 0; transition: all 0.25s var(–ease-smooth);
+}
+.tx-step.complete .tx-step-num {
+background: rgba(110,231,183,0.15); border-color: rgba(110,231,183,0.4); color: var(–accent3);
+}
+.tx-step-label {
+font-family: ‘Syne’, sans-serif; font-weight: 700; font-size: 0.82rem; color: var(–text);
+}
+.tx-step-desc { font-size: 0.7rem; color: var(–subtle); margin-top: 0.1rem; }
+.tx-step-body { padding: 0 1.25rem 1.25rem; display: none; }
+.tx-step.open .tx-step-body { display: block; }
+
+/* Closure path + post mode pills */
+.pill-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+.pill {
+font-family: ‘Syne’, sans-serif; font-weight: 600; font-size: 0.68rem;
+letter-spacing: 0.04em; padding: 0.4rem 0.85rem; border-radius: 20px;
+border: 1px solid var(–glass-border); background: rgba(255,255,255,0.04);
+color: var(–muted); cursor: pointer; transition: all 0.2s var(–ease-smooth);
+text-transform: uppercase;
+}
+.pill:hover { background: rgba(255,255,255,0.08); color: var(–text); }
+.pill.selected {
+background: rgba(125,211,252,0.15); border-color: rgba(125,211,252,0.45);
+color: var(–accent);
+}
+.pill.selected.accent2 {
+background: rgba(196,181,253,0.15); border-color: rgba(196,181,253,0.4); color: var(–accent2);
+}
+
+/* Fingerprint display */
+.fingerprint-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-top: 0.75rem; }
+@media (max-width: 480px) { .fingerprint-grid { grid-template-columns: 1fr; } }
+.fp-item {
+background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+border-radius: 10px; padding: 0.6rem 0.85rem;
+}
+.fp-key { font-family: ‘Syne’, sans-serif; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(–subtle); margin-bottom: 0.25rem; }
+.fp-val { font-size: 0.75rem; color: var(–text); }
+.fp-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.25rem; }
+.fp-tag { font-size: 0.62rem; padding: 0.15rem 0.5rem; border-radius: 6px; background: rgba(125,211,252,0.1); color: var(–accent); font-family: ‘DM Mono’, monospace; }
+
+/* Venue recommendations */
+.venue-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.75rem; }
+.venue-card {
+border: 1px solid var(–glass-border); border-radius: 14px;
+background: rgba(255,255,255,0.03); padding: 1rem 1.1rem;
+cursor: pointer; transition: all 0.22s var(–ease-smooth); position: relative;
+}
+.venue-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.2); }
+.venue-card.selected {
+background: rgba(125,211,252,0.08); border-color: rgba(125,211,252,0.4);
+}
+.venue-card-top { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+.venue-name { font-family: ‘Syne’, sans-serif; font-weight: 700; font-size: 0.88rem; color: var(–text); }
+.venue-platform { font-size: 0.65rem; color: var(–subtle); font-family: ‘DM Mono’, monospace; text-transform: uppercase; letter-spacing: 0.05em; }
+.venue-score {
+font-family: ‘Syne’, sans-serif; font-weight: 800; font-size: 1.1rem;
+min-width: 42px; text-align: right;
+}
+.score-high { color: var(–accent3); }
+.score-mid { color: var(–accent); }
+.score-low { color: var(–danger); }
+
+.venue-mode-badge {
+display: inline-block; font-size: 0.62rem; font-family: ‘Syne’, sans-serif; font-weight: 700;
+text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2rem 0.55rem; border-radius: 6px;
+background: rgba(196,181,253,0.12); color: var(–accent2); border: 1px solid rgba(196,181,253,0.25);
+margin-top: 0.4rem;
+}
+.venue-reasons { margin-top: 0.6rem; display: flex; flex-direction: column; gap: 0.25rem; }
+.venue-reason { font-size: 0.7rem; color: var(–accent3); display: flex; align-items: baseline; gap: 0.35rem; }
+.venue-reason::before { content: ‘✓’; flex-shrink: 0; }
+.venue-warning { font-size: 0.7rem; color: #fbbf24; display: flex; align-items: baseline; gap: 0.35rem; }
+.venue-warning::before { content: ‘⚠’; flex-shrink: 0; }
+.score-bar { height: 3px; border-radius: 2px; background: rgba(255,255,255,0.06); margin-top: 0.6rem; }
+.score-fill { height: 100%; border-radius: 2px; transition: width 0.5s var(–ease-smooth); }
+
+/* Draft output */
+.draft-tabs { display: flex; gap: 0.35rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+.draft-tab {
+font-family: ‘Syne’, sans-serif; font-weight: 600; font-size: 0.65rem;
+text-transform: uppercase; letter-spacing: 0.05em; padding: 0.35rem 0.75rem;
+border-radius: 8px; border: 1px solid var(–glass-border); background: transparent;
+color: var(–subtle); cursor: pointer; transition: all 0.18s var(–ease-smooth);
+}
+.draft-tab:hover { color: var(–muted); }
+.draft-tab.active { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.18); color: var(–text); }
+
+.draft-output {
+background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.08);
+border-radius: 12px; padding: 1rem; font-family: ‘DM Mono’, monospace;
+font-size: 0.78rem; line-height: 1.7; color: var(–text); white-space: pre-wrap;
+max-height: 400px; overflow-y: auto; min-height: 120px;
+}
+.draft-title-display {
+font-family: ‘Syne’, sans-serif; font-weight: 700; font-size: 0.88rem;
+color: var(–accent); margin-bottom: 0.5rem; padding: 0.6rem 0.85rem;
+background: rgba(125,211,252,0.06); border-radius: 8px; border: 1px solid rgba(125,211,252,0.15);
+}
+
+.compliance-box {
+margin-top: 0.75rem; border-radius: 10px; padding: 0.75rem 1rem;
+font-size: 0.72rem; line-height: 1.5;
+}
+.compliance-pass { background: rgba(110,231,183,0.08); border: 1px solid rgba(110,231,183,0.25); color: var(–accent3); }
+.compliance-warn { background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.25); color: #fbbf24; }
+.compliance-item { display: flex; align-items: baseline; gap: 0.4rem; margin-top: 0.25rem; }
+
+/* Externalize */
+.externalize-card {
+border: 1px solid rgba(110,231,183,0.3); border-radius: 16px;
+background: rgba(110,231,183,0.05); padding: 1.5rem; text-align: center;
+}
+.externalize-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.externalize-title { font-family: ‘Syne’, sans-serif; font-weight: 800; font-size: 1rem; color: var(–accent3); margin-bottom: 0.4rem; }
+.externalize-desc { font-size: 0.75rem; color: var(–muted); margin-bottom: 1.25rem; line-height: 1.6; }
+.ram-badge {
+display: inline-flex; align-items: center; gap: 0.5rem;
+background: rgba(125,211,252,0.1); border: 1px solid rgba(125,211,252,0.25);
+border-radius: 20px; padding: 0.4rem 1rem; margin-bottom: 1rem;
+font-family: ‘Syne’, sans-serif; font-size: 0.72rem; font-weight: 700; color: var(–accent);
+}
+
+/* Externalized card badge */
+.sc-badge-externalized {
+background: rgba(110,231,183,0.15); color: var(–accent3);
+border: 1px solid rgba(110,231,183,0.3); font-family: ‘Syne’, sans-serif;
+font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+padding: 0.2rem 0.6rem; border-radius: 6px;
+}
+
+/* Loading spinner */
+.tx-loading {
+display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+padding: 1.5rem; color: var(–muted); font-size: 0.78rem; font-family: ‘DM Mono’, monospace;
+}
+.tx-spinner {
+width: 18px; height: 18px; border-radius: 50%;
+border: 2px solid rgba(125,211,252,0.2); border-top-color: var(–accent);
+animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* API key field */
+.api-key-wrap {
+display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem;
+}
+.api-key-field {
+flex: 1; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+border-radius: 10px; color: var(–text); font-family: ‘DM Mono’, monospace;
+font-size: 0.78rem; padding: 0.55rem 0.85rem; outline: none;
+transition: all 0.2s var(–ease-smooth);
+}
+.api-key-field:focus { border-color: rgba(125,211,252,0.4); background: rgba(255,255,255,0.07); }
+.api-key-saved { font-size: 0.68rem; color: var(–accent3); font-family: ‘DM Mono’, monospace; }
+
+/* Outcome section */
+.outcome-fields { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.75rem; }
+.outcome-stars { display: flex; gap: 0.35rem; }
+.outcome-star {
+font-size: 1.1rem; cursor: pointer; transition: transform 0.15s var(–ease-spring);
+filter: grayscale(1); opacity: 0.4;
+}
+.outcome-star.active { filter: none; opacity: 1; }
+.outcome-star:hover { transform: scale(1.2); }
+
+/* Closed/externalized state on cards */
+.sc-card.externalized { opacity: 0.65; }
+.sc-card.externalized::after {
+content: ‘EXTERNALIZED’;
+position: absolute; top: 0.6rem; right: 0.6rem;
+font-family: ‘Syne’, sans-serif; font-size: 0.55rem; font-weight: 700;
+letter-spacing: 0.1em; color: var(–accent3);
+background: rgba(110,231,183,0.12); border: 1px solid rgba(110,231,183,0.3);
+padding: 0.15rem 0.5rem; border-radius: 4px;
+}
+.sc-card { position: relative; }
+
+/* Transmitter tab accent color */
+.tab-btn.tx-tab.active { color: var(–accent2); }
+
+/* Groq status */
+.groq-status {
+font-size: 0.67rem; font-family: ‘DM Mono’, monospace;
+padding: 0.3rem 0.7rem; border-radius: 6px;
+}
+.groq-ok { background: rgba(110,231,183,0.1); color: var(–accent3); }
+.groq-no { background: rgba(248,113,113,0.1); color: var(–danger); }
+
 </style>
 </head>
 <body>
@@ -498,6 +758,7 @@ header {
     <button class="tab-btn active" onclick="switchTab('cards', this)">Cards <span class="count-badge" id="cardCount">0</span></button>
     <button class="tab-btn" onclick="switchTab('create', this)">+ New</button>
     <button class="tab-btn" onclick="switchTab('templates', this)">Templates</button>
+    <button class="tab-btn tx-tab" onclick="switchTab('transmit', this)">⇢ Transmit</button>
   </div>
 
   <div class="tab-panel active panel-wrap" id="tab-cards">
@@ -514,85 +775,88 @@ header {
       ✏️ Editing card — <span id="editingName"></span>
     </div>
 
-    <div class="form-grid">
-      <div class="form-row">
-        <div class="field">
-          <label>Project Name</label>
-          <input type="text" id="projectName" placeholder="e.g. Anchor">
-        </div>
-        <div class="field">
-          <label>One-Liner</label>
-          <input type="text" id="oneLiner" placeholder="What it does in one sentence">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="field">
-          <label>Target User</label>
-          <textarea id="targetUser" placeholder="Who uses this?"></textarea>
-        </div>
-        <div class="field">
-          <label>Problem</label>
-          <textarea id="problem" placeholder="What pain does it solve?"></textarea>
-        </div>
-      </div>
-      <div class="field">
-        <label>Solution</label>
-        <textarea id="solution" placeholder="How does it solve the problem?"></textarea>
-      </div>
-      <div class="field">
-        <label>Core Workflow</label>
-        <textarea id="coreWorkflow" placeholder="Step-by-step: how does a user go from zero to value?"></textarea>
-      </div>
-      <div class="form-row">
-        <div class="field">
-          <label>MVP Build Order</label>
-          <textarea id="mvpBuild" placeholder="Sequence: what to build first"></textarea>
-        </div>
-        <div class="field">
-          <label>Differentiation</label>
-          <textarea id="differentiation" placeholder="Why is this better / different?"></textarea>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="field">
-          <label>Monetization</label>
-          <textarea id="monetization" placeholder="How does this make money?"></textarea>
-        </div>
-        <div class="field">
-          <label>Next Expansion</label>
-          <textarea id="nextExpansion" placeholder="What's the V2 or growth path?"></textarea>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="field">
-          <label>What Works Well ✓</label>
-          <textarea id="worksWell" placeholder="Strengths, validated assumptions"></textarea>
-        </div>
-        <div class="field">
-          <label>What Doesn't Work ✗</label>
-          <textarea id="doesntWork" placeholder="Gaps, risks, limitations"></textarea>
-        </div>
-      </div>
-      <div class="field">
-        <label>Handoff Readiness</label>
-        <div class="range-display">
-          <input type="range" id="handoffReadiness" min="0" max="10" value="5" oninput="updateRange(this)">
-          <span class="range-value" id="rangeVal">5</span>
-          <span style="font-size:0.72rem; color:var(--subtle)">/10</span>
-        </div>
-      </div>
+```
+<div class="form-grid">
+  <div class="form-row">
+    <div class="field">
+      <label>Project Name</label>
+      <input type="text" id="projectName" placeholder="e.g. Anchor">
     </div>
+    <div class="field">
+      <label>One-Liner</label>
+      <input type="text" id="oneLiner" placeholder="What it does in one sentence">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="field">
+      <label>Target User</label>
+      <textarea id="targetUser" placeholder="Who uses this?"></textarea>
+    </div>
+    <div class="field">
+      <label>Problem</label>
+      <textarea id="problem" placeholder="What pain does it solve?"></textarea>
+    </div>
+  </div>
+  <div class="field">
+    <label>Solution</label>
+    <textarea id="solution" placeholder="How does it solve the problem?"></textarea>
+  </div>
+  <div class="field">
+    <label>Core Workflow</label>
+    <textarea id="coreWorkflow" placeholder="Step-by-step: how does a user go from zero to value?"></textarea>
+  </div>
+  <div class="form-row">
+    <div class="field">
+      <label>MVP Build Order</label>
+      <textarea id="mvpBuild" placeholder="Sequence: what to build first"></textarea>
+    </div>
+    <div class="field">
+      <label>Differentiation</label>
+      <textarea id="differentiation" placeholder="Why is this better / different?"></textarea>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="field">
+      <label>Monetization</label>
+      <textarea id="monetization" placeholder="How does this make money?"></textarea>
+    </div>
+    <div class="field">
+      <label>Next Expansion</label>
+      <textarea id="nextExpansion" placeholder="What's the V2 or growth path?"></textarea>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="field">
+      <label>What Works Well ✓</label>
+      <textarea id="worksWell" placeholder="Strengths, validated assumptions"></textarea>
+    </div>
+    <div class="field">
+      <label>What Doesn't Work ✗</label>
+      <textarea id="doesntWork" placeholder="Gaps, risks, limitations"></textarea>
+    </div>
+  </div>
+  <div class="field">
+    <label>Handoff Readiness</label>
+    <div class="range-display">
+      <input type="range" id="handoffReadiness" min="0" max="10" value="5" oninput="updateRange(this)">
+      <span class="range-value" id="rangeVal">5</span>
+      <span style="font-size:0.72rem; color:var(--subtle)">/10</span>
+    </div>
+  </div>
+</div>
 
-    <div class="divider"></div>
-    <div class="btn-row">
-      <button class="btn btn-primary ripple-host" onclick="saveCard(this)">⬡ Save Card</button>
-      <button class="btn btn-secondary ripple-host" onclick="previewMarkdown()">◈ Preview MD</button>
-      <button class="btn btn-ghost" onclick="resetForm()">✕ Clear</button>
-    </div>
-    <div id="mdPreviewWrap" style="display:none; margin-top:1rem;">
-      <div style="font-family:'Syne',sans-serif; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--subtle); margin-bottom:0.3rem;">Markdown Preview</div>
-      <pre class="md-preview" id="markdownOutput"></pre>
-    </div>
+<div class="divider"></div>
+<div class="btn-row">
+  <button class="btn btn-primary ripple-host" onclick="saveCard(this)">⬡ Save Card</button>
+  <button class="btn btn-secondary ripple-host" onclick="previewMarkdown()">◈ Preview MD</button>
+  <button class="btn btn-ghost" onclick="resetForm()">✕ Clear</button>
+</div>
+<div id="mdPreviewWrap" style="display:none; margin-top:1rem;">
+  <div style="font-family:'Syne',sans-serif; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--subtle); margin-bottom:0.3rem;">Markdown Preview</div>
+  <pre class="md-preview" id="markdownOutput"></pre>
+</div>
+```
+
   </div>
 
   <div class="tab-panel panel-wrap" id="tab-templates">
@@ -602,6 +866,130 @@ header {
     </div>
     <div class="templates-grid" id="templateGrid"></div>
   </div>
+
+  <!-- TRANSMITTER ENGINE -->
+
+  <div class="tab-panel panel-wrap" id="tab-transmit">
+    <div class="tx-header">
+      <div>
+        <div class="tx-title">Transmitter Engine</div>
+        <div class="tx-subtitle">Route your project. Package it. Release it. Free the RAM.</div>
+      </div>
+      <div class="tx-ai-toggle">
+        <span id="aiToggleLabel" style="color:var(--subtle)">AI OFF</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="aiToggle" onchange="txToggleAI(this.checked)">
+          <div class="toggle-track"></div>
+          <div class="toggle-thumb"></div>
+        </label>
+      </div>
+    </div>
+
+```
+<div id="apiKeySection" style="display:none; margin-bottom:1.25rem; padding:1rem; background:rgba(196,181,253,0.05); border:1px solid rgba(196,181,253,0.18); border-radius:12px;">
+  <div style="font-family:'Syne',sans-serif; font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent2); margin-bottom:0.5rem;">Anthropic API Key</div>
+  <div class="api-key-wrap">
+    <input type="password" class="api-key-field" id="txApiKey" placeholder="sk-ant-…" oninput="txSaveApiKey()">
+    <span class="api-key-saved" id="apiKeySaved" style="display:none">&#10003; saved</span>
+  </div>
+  <div style="font-size:0.67rem; color:var(--subtle);">Stored in localStorage only. Never sent anywhere except Anthropic.</div>
+</div>
+
+<div style="font-family:'Syne',sans-serif; font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:0.4rem;">Select Project Card</div>
+<select class="tx-project-select" id="txProjectSelect" onchange="txSelectProject(this.value)">
+  <option value="">&#8212; choose a card &#8212;</option>
+</select>
+
+<div class="tx-steps" id="txSteps">
+
+  <div class="tx-step locked" id="txStep1" data-step="1">
+    <div class="tx-step-header" onclick="txToggleStep(1)">
+      <div class="tx-step-num">1</div>
+      <div>
+        <div class="tx-step-label">Project Fingerprint</div>
+        <div class="tx-step-desc">Infer type, stage, audience, and evidence</div>
+      </div>
+    </div>
+    <div class="tx-step-body" id="txStep1Body">
+      <div id="txFingerprintDisplay"></div>
+      <div class="btn-row" style="margin-top:0.75rem;">
+        <button class="btn btn-primary ripple-host" onclick="txGenerateFingerprint()">&#11041; Generate Fingerprint</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tx-step locked" id="txStep2" data-step="2">
+    <div class="tx-step-header" onclick="txToggleStep(2)">
+      <div class="tx-step-num">2</div>
+      <div>
+        <div class="tx-step-label">Objective / Closure Path</div>
+        <div class="tx-step-desc">What outcome do you want from externalizing this?</div>
+      </div>
+    </div>
+    <div class="tx-step-body" id="txStep2Body">
+      <div class="pill-grid" id="closurePathPills"></div>
+      <div class="btn-row" style="margin-top:0.75rem;">
+        <button class="btn btn-primary ripple-host" onclick="txConfirmClosure()">Confirm Objective &#8594;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tx-step locked" id="txStep3" data-step="3">
+    <div class="tx-step-header" onclick="txToggleStep(3)">
+      <div class="tx-step-num">3</div>
+      <div>
+        <div class="tx-step-label">Venue Recommendations</div>
+        <div class="tx-step-desc">Ranked by cultural fit, not reach</div>
+      </div>
+    </div>
+    <div class="tx-step-body" id="txStep3Body">
+      <div id="txVenueList" class="venue-list"></div>
+    </div>
+  </div>
+
+  <div class="tx-step locked" id="txStep4" data-step="4">
+    <div class="tx-step-header" onclick="txToggleStep(4)">
+      <div class="tx-step-num">4</div>
+      <div>
+        <div class="tx-step-label">Draft Package</div>
+        <div class="tx-step-desc">Venue-native post, short version, and low-promo variant</div>
+      </div>
+    </div>
+    <div class="tx-step-body" id="txStep4Body">
+      <div id="txDraftLoading" style="display:none" class="tx-loading">
+        <div class="tx-spinner"></div><span>Generating draft&#8230;</span>
+      </div>
+      <div id="txDraftPanel" style="display:none">
+        <div class="draft-tabs" id="txDraftTabs"></div>
+        <div class="draft-title-display" id="txDraftTitle"></div>
+        <div class="draft-output" id="txDraftOutput"></div>
+        <div id="txCompliance"></div>
+      </div>
+      <div class="btn-row" style="margin-top:0.75rem;">
+        <button class="btn btn-primary ripple-host" id="txGenDraftBtn" onclick="txGenerateDraft()">&#11041; Generate Draft</button>
+        <button class="btn btn-secondary" id="txCopyBtn" style="display:none" onclick="txCopyDraft()">&#8599; Copy Draft</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tx-step locked" id="txStep5" data-step="5">
+    <div class="tx-step-header" onclick="txToggleStep(5)">
+      <div class="tx-step-num">5</div>
+      <div>
+        <div class="tx-step-label">Externalize</div>
+        <div class="tx-step-desc">Mark as handed off. Free the mental RAM.</div>
+      </div>
+    </div>
+    <div class="tx-step-body" id="txStep5Body">
+      <div id="txExternalizeContent"></div>
+    </div>
+  </div>
+
+</div>
+```
+
+  </div>
+
 </div>
 
 <div class="detail-view" id="detailView">
@@ -884,6 +1272,13 @@ function switchTab(name, btn) {
   document.getElementById('tab-' + name).classList.add('active');
   btn.classList.add('active');
   activeTab = name;
+  // TX: populate project select when transmit tab opens
+  if (name === 'transmit' && typeof txPopulateSelect === 'function') {
+    txPopulateSelect();
+    const saved = localStorage.getItem('tx_apikey') || '';
+    const keyEl = document.getElementById('txApiKey');
+    if (saved && keyEl) keyEl.value = saved;
+  }
 }
 
 function toggleSearch() {
@@ -940,11 +1335,13 @@ function renderDashboard() {
     const rc = readinessClass(c.handoffReadiness);
     const bc = readinessBadgeClass(c.handoffReadiness);
     const div = document.createElement('div');
-    div.className = 'system-card ripple-host';
+    const isExt = txState && txState.externalizedIds.includes(String(c.id));
+    div.className = 'system-card ripple-host sc-card' + (isExt ? ' externalized' : '');
+    div.dataset.cardId = c.id;
     div.innerHTML = `
       <div class="sc-header">
         <div class="sc-name">${esc(c.projectName)}</div>
-        <span class="sc-badge ${bc}">${c.handoffReadiness}/10</span>
+        <span class="sc-badge ${isExt ? 'sc-badge-externalized' : bc}">${isExt ? '&#x2713; OUT' : c.handoffReadiness+'/10'}</span>
       </div>
       ${c.oneLiner ? `<div class="sc-oneliner">${esc(c.oneLiner)}</div>` : ''}
       <div class="readiness-bar"><div class="readiness-fill ${rc}" style="width:${readinessPct(c.handoffReadiness)}"></div></div>
@@ -1040,6 +1437,7 @@ function openDetail(id) {
   `;
   document.getElementById('detailView').classList.add('open');
   document.body.style.overflow = 'hidden';
+  if (typeof txInjectDetailButton === 'function') txInjectDetailButton(id);
 }
 
 function closeDetail() {
@@ -1261,6 +1659,862 @@ function addRipple(e) {
   dot.addEventListener('animationend', () => dot.remove());
 }
 
+
+// ─── TRANSMITTER ENGINE ───────────────────────────────────────────────────────
+
+// ── Venue Registry ────────────────────────────────────────────────────────────
+const TX_VENUES = [
+  {
+    id: 'hn_show', platform: 'Hacker News', name: 'Show HN',
+    topicTags: ['devtools','systems','ai','oss','automation','developer','infrastructure'],
+    audienceTags: ['developers','founders','early_adopters'],
+    allowedPostModes: ['show','oss_intro','technical_writeup'],
+    preferredTone: 'technical', selfPromoTolerance: 3,
+    requiresProof: ['demo'],
+    recommendedProof: ['repo','writeup'],
+    titleStyle: 'Show HN: {name} – {plain description}',
+    norms: ['Be direct','Explain why you built it','Avoid hype'],
+    forbiddenPatterns: ['revolutionary','game-changing','vague launch copy','seamless'],
+    stageFit: ['working_demo','beta','launched','oss_live'],
+    closurePathFit: ['validation','adoption','open_source','contributors']
+  },
+  {
+    id: 'hn_ask', platform: 'Hacker News', name: 'Ask HN',
+    topicTags: ['systems','ai','developer','tools','research'],
+    audienceTags: ['developers','founders','researchers'],
+    allowedPostModes: ['ask','technical_writeup'],
+    preferredTone: 'technical', selfPromoTolerance: 2,
+    requiresProof: [],
+    norms: ['Ask a specific question','Share context upfront','Avoid self-promo'],
+    forbiddenPatterns: ['launch copy','promotional'],
+    stageFit: ['idea','prototype','working_demo'],
+    closurePathFit: ['validation','design_partners']
+  },
+  {
+    id: 'reddit_selfhosted', platform: 'Reddit', name: 'r/selfhosted',
+    topicTags: ['self-hosting','privacy','automation','infra','homelab','docker','linux'],
+    audienceTags: ['developers','sysadmins','self_hosters'],
+    allowedPostModes: ['show','ask','oss_intro'],
+    preferredTone: 'technical', selfPromoTolerance: 2,
+    requiresProof: ['repo'],
+    recommendedProof: ['screenshots','demo'],
+    titleStyle: 'State clearly what it does',
+    norms: ['Lead with utility','Transparent you built it','Setup details help'],
+    forbiddenPatterns: ['business jargon','vague pitch','revolutionary'],
+    stageFit: ['prototype','working_demo','oss_live','beta'],
+    closurePathFit: ['validation','open_source','contributors','adoption']
+  },
+  {
+    id: 'reddit_sideproject', platform: 'Reddit', name: 'r/SideProject',
+    topicTags: ['saas','app','startup','bootstrap','tool','ai'],
+    audienceTags: ['founders','early_adopters','developers'],
+    allowedPostModes: ['show','launch'],
+    preferredTone: 'founder', selfPromoTolerance: 4,
+    requiresProof: ['demo'],
+    norms: ['Show what you built','Share your stack','Honest about status'],
+    forbiddenPatterns: ['academic jargon'],
+    stageFit: ['prototype','working_demo','beta','launched'],
+    closurePathFit: ['validation','adoption','handoff']
+  },
+  {
+    id: 'reddit_programming', platform: 'Reddit', name: 'r/programming',
+    topicTags: ['developer','systems','language','tooling','open-source'],
+    audienceTags: ['developers','researchers'],
+    allowedPostModes: ['show','technical_writeup','oss_intro'],
+    preferredTone: 'technical', selfPromoTolerance: 2,
+    requiresProof: ['repo','writeup'],
+    norms: ['Technical depth required','No marketing copy','Link to code'],
+    forbiddenPatterns: ['promotional','vague'],
+    stageFit: ['working_demo','launched','oss_live','production_ready'],
+    closurePathFit: ['open_source','adoption','validation']
+  },
+  {
+    id: 'ih_feedback', platform: 'Indie Hackers', name: 'IH / Feedback',
+    topicTags: ['saas','startup','bootstrapping','mvp','product','b2b'],
+    audienceTags: ['founders','early_adopters','developers'],
+    allowedPostModes: ['ask','show','launch'],
+    preferredTone: 'founder', selfPromoTolerance: 3,
+    requiresProof: ['demo'],
+    recommendedProof: ['users','revenue'],
+    norms: ['Be vulnerable about challenges','Share metrics','Ask specific questions'],
+    forbiddenPatterns: ['pure promotion without ask'],
+    stageFit: ['prototype','working_demo','beta','launched'],
+    closurePathFit: ['validation','design_partners','adoption']
+  },
+  {
+    id: 'ih_launch', platform: 'Indie Hackers', name: 'IH / Launch',
+    topicTags: ['saas','startup','product','tool','ai'],
+    audienceTags: ['founders','early_adopters'],
+    allowedPostModes: ['launch','show'],
+    preferredTone: 'founder', selfPromoTolerance: 4,
+    requiresProof: ['demo'],
+    norms: ['Share revenue/traction','Tell origin story','Clear CTA'],
+    forbiddenPatterns: ['vague'],
+    stageFit: ['beta','launched','production_ready'],
+    closurePathFit: ['adoption','design_partners']
+  },
+  {
+    id: 'linkedin_operators', platform: 'LinkedIn', name: 'LinkedIn / Operators',
+    topicTags: ['workflow','automation','b2b','operations','ai','enterprise'],
+    audienceTags: ['operators','founders','buyers'],
+    allowedPostModes: ['handoff','launch','design_partner_request','integration_pitch'],
+    preferredTone: 'pragmatic', selfPromoTolerance: 4,
+    requiresProof: [],
+    recommendedProof: ['writeup','demo'],
+    titleStyle: 'Lead with business outcome',
+    norms: ['Translate technical depth into leverage','First sentence non-technical','Clear CTA'],
+    forbiddenPatterns: ['overly academic opening','code snippets in body'],
+    stageFit: ['prototype','working_demo','beta','launched','production_ready'],
+    closurePathFit: ['handoff','design_partners','licensing_integration','acquisition']
+  },
+  {
+    id: 'producthunt', platform: 'Product Hunt', name: 'Product Hunt',
+    topicTags: ['app','saas','tool','ai','devtools','productivity'],
+    audienceTags: ['early_adopters','founders','creators'],
+    allowedPostModes: ['launch'],
+    preferredTone: 'founder', selfPromoTolerance: 5,
+    requiresProof: ['demo','screenshots'],
+    norms: ['Polished UI expected','Clear value prop in tagline','Respond to comments'],
+    forbiddenPatterns: ['technical jargon upfront','no demo'],
+    stageFit: ['beta','launched','production_ready'],
+    closurePathFit: ['adoption','open_source']
+  },
+  {
+    id: 'github_release', platform: 'GitHub', name: 'GitHub / Release',
+    topicTags: ['oss','library','devtools','cli','framework','automation'],
+    audienceTags: ['developers','maintainers'],
+    allowedPostModes: ['oss_intro','show'],
+    preferredTone: 'technical', selfPromoTolerance: 5,
+    requiresProof: ['repo'],
+    recommendedProof: ['writeup','demo'],
+    norms: ['README must be complete','Include install instructions','Changelog helpful'],
+    forbiddenPatterns: ['hype without substance'],
+    stageFit: ['working_demo','oss_live','launched'],
+    closurePathFit: ['open_source','contributors','adoption']
+  },
+  {
+    id: 'mastodon', platform: 'Mastodon', name: 'Mastodon / #hashtag',
+    topicTags: ['oss','devtools','fediverse','privacy','selfhost'],
+    audienceTags: ['developers','self_hosters','researchers'],
+    allowedPostModes: ['show','oss_intro','ask'],
+    preferredTone: 'casual', selfPromoTolerance: 2,
+    requiresProof: ['repo'],
+    norms: ['Short and direct','No marketing','Link to repo','Use hashtags'],
+    forbiddenPatterns: ['long sales copy','commercial framing'],
+    stageFit: ['prototype','working_demo','oss_live'],
+    closurePathFit: ['open_source','validation','contributors']
+  },
+  {
+    id: 'devto', platform: 'dev.to', name: 'dev.to Article',
+    topicTags: ['developer','tutorial','architecture','devtools','ai','systems'],
+    audienceTags: ['developers','early_adopters'],
+    allowedPostModes: ['technical_writeup','show','oss_intro'],
+    preferredTone: 'technical', selfPromoTolerance: 3,
+    requiresProof: ['writeup'],
+    recommendedProof: ['repo','demo'],
+    norms: ['Long-form technical content works well','Include code examples','Tag properly'],
+    forbiddenPatterns: ['no technical depth','pure launch copy'],
+    stageFit: ['working_demo','beta','launched','oss_live'],
+    closurePathFit: ['adoption','open_source','validation']
+  }
+];
+
+const CLOSURE_PATHS = [
+  { id: 'validation', label: 'Validation', desc: 'Is this architecture useful/correct?' },
+  { id: 'adoption', label: 'Adoption', desc: 'People can use this now' },
+  { id: 'contributors', label: 'Contributors', desc: 'Looking for collaborators or maintainers' },
+  { id: 'open_source', label: 'Open Source', desc: 'Releasing for the community' },
+  { id: 'design_partners', label: 'Design Partners', desc: 'Looking for teams with this problem' },
+  { id: 'handoff', label: 'Handoff', desc: 'Looking for an operator or founder to run this' },
+  { id: 'acquisition', label: 'Acquisition', desc: 'Looking for a buyer' },
+  { id: 'licensing_integration', label: 'License / Integrate', desc: 'This can plug into an existing product' }
+];
+
+const POST_MODES = {
+  validation: 'ask', adoption: 'launch', contributors: 'oss_intro',
+  open_source: 'oss_intro', design_partners: 'design_partner_request',
+  handoff: 'handoff', acquisition: 'handoff', licensing_integration: 'integration_pitch'
+};
+
+const POST_MODE_LABELS = {
+  show: 'Show', ask: 'Ask', launch: 'Launch', oss_intro: 'OSS Intro',
+  technical_writeup: 'Technical Write-up', design_partner_request: 'Design Partner',
+  handoff: 'Handoff Post', integration_pitch: 'Integration Pitch'
+};
+
+const BANNED_PHRASES = ['revolutionary','game-changing','game changer','unlock','seamless',
+  'delve','next-gen','world-class','disruptive','cutting-edge','leverage','synergy',
+  'paradigm shift','transformative','unprecedented','state-of-the-art','innovative solution'];
+
+// ── TX State ──────────────────────────────────────────────────────────────────
+let txState = {
+  aiEnabled: false,
+  selectedCardId: null,
+  fingerprint: null,
+  closurePath: null,
+  selectedVenueId: null,
+  inferredMode: null,
+  draftPackage: null,
+  currentDraftVariant: 'body',
+  externalizedIds: JSON.parse(localStorage.getItem('tx_externalized') || '[]'),
+  outcomes: JSON.parse(localStorage.getItem('tx_outcomes') || '{}')
+};
+
+function txToggleAI(enabled) {
+  txState.aiEnabled = enabled;
+  document.getElementById('aiToggleLabel').textContent = enabled ? 'AI ON' : 'AI OFF';
+  document.getElementById('apiKeySection').style.display = enabled ? 'block' : 'none';
+  if (enabled) {
+    const saved = localStorage.getItem('tx_apikey') || '';
+    document.getElementById('txApiKey').value = saved;
+  }
+}
+
+function txSaveApiKey() {
+  const val = document.getElementById('txApiKey').value.trim();
+  localStorage.setItem('tx_apikey', val);
+  const badge = document.getElementById('apiKeySaved');
+  badge.style.display = val ? 'inline' : 'none';
+}
+
+function txPopulateSelect() {
+  const sel = document.getElementById('txProjectSelect');
+  const current = sel.value;
+  sel.innerHTML = '<option value="">— choose a card —</option>';
+  cards.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c.id;
+    const ext = txState.externalizedIds.includes(String(c.id));
+    opt.textContent = c.projectName + (ext ? ' ✓ externalized' : '');
+    sel.appendChild(opt);
+  });
+  if (current) sel.value = current;
+}
+
+function txSelectProject(id) {
+  if (!id) return;
+  txState.selectedCardId = id;
+  txState.fingerprint = null;
+  txState.closurePath = null;
+  txState.selectedVenueId = null;
+  txState.draftPackage = null;
+  // unlock step 1
+  txUnlockStep(1);
+  txOpenStep(1);
+  // reset subsequent
+  [2,3,4,5].forEach(n => { txLockStep(n); txMarkStepIncomplete(n); });
+  document.getElementById('txFingerprintDisplay').innerHTML = '';
+  toast('Card selected — generate fingerprint to continue');
+}
+
+function txUnlockStep(n) { document.getElementById('txStep'+n).classList.remove('locked'); }
+function txLockStep(n) { document.getElementById('txStep'+n).classList.add('locked'); }
+function txOpenStep(n) { document.getElementById('txStep'+n).classList.add('open'); }
+function txCloseStep(n) { document.getElementById('txStep'+n).classList.remove('open'); }
+function txMarkStepComplete(n) { document.getElementById('txStep'+n).classList.add('complete'); }
+function txMarkStepIncomplete(n) { document.getElementById('txStep'+n).classList.remove('complete'); }
+function txToggleStep(n) {
+  const el = document.getElementById('txStep'+n);
+  if (el.classList.contains('locked')) return;
+  el.classList.toggle('open');
+}
+
+// ── Fingerprint generation ────────────────────────────────────────────────────
+function txInferProjectType(card) {
+  const text = [card.solution, card.differentiation, card.oneLiner].join(' ').toLowerCase();
+  if (/cli|command.line|terminal|shell/.test(text)) return 'devtool';
+  if (/library|package|sdk|api|framework/.test(text)) return 'oss_library';
+  if (/saas|subscription|b2b|enterprise/.test(text)) return 'b2b_saas';
+  if (/workflow|automat|pipeline/.test(text)) return 'workflow_automation';
+  if (/video|media|image|audio|stream/.test(text)) return 'media_pipeline';
+  if (/ai|llm|gpt|ml|model|inference/.test(text)) return 'devtool';
+  if (/app|mobile|browser|extension/.test(text)) return 'consumer_app';
+  return 'other';
+}
+
+function txInferStage(card) {
+  const r = parseInt(card.handoffReadiness) || 5;
+  if (r <= 2) return 'idea';
+  if (r <= 4) return 'prototype';
+  if (r <= 6) return 'working_demo';
+  if (r <= 8) return 'beta';
+  return 'production_ready';
+}
+
+function txInferAudience(card) {
+  const text = [card.targetUser, card.solution, card.monetization].join(' ').toLowerCase();
+  const tags = [];
+  if (/developer|engineer|coder|programmer/.test(text)) tags.push('developers');
+  if (/founder|startup|ceo|cto/.test(text)) tags.push('founders');
+  if (/operator|business|company|team/.test(text)) tags.push('operators');
+  if (/self-host|homelab|raspberry|docker/.test(text)) tags.push('self_hosters');
+  if (/research|academic|paper/.test(text)) tags.push('researchers');
+  if (/creator|designer|artist/.test(text)) tags.push('creators');
+  if (tags.length === 0) tags.push('developers');
+  return tags;
+}
+
+function txInferDomainTags(card) {
+  const text = [card.projectName, card.oneLiner, card.solution, card.differentiation, card.mvpBuild].join(' ').toLowerCase();
+  const tagMap = {
+    'ai': /ai|llm|gpt|ml|inference|embedding/,
+    'devtools': /devtool|cli|developer tool|debug|profil/,
+    'systems': /system design|architecture|distributed|service/,
+    'oss': /open.source|oss|open source/,
+    'automation': /automat|workflow|pipeline|trigger/,
+    'infrastructure': /infra|kubernetes|docker|cloud|deploy|server/,
+    'self-hosting': /self.host|homelab|local.first|selfhost/,
+    'privacy': /privacy|local.first|no cloud|offline/,
+    'saas': /saas|subscription|recurring|b2b/,
+    'b2b': /b2b|enterprise|team|company|business/,
+    'api': /api|endpoint|rest|graphql|webhook/,
+    'tooling': /tool|utility|helper|scaffold/,
+    'video': /video|media|transcod|ffmpeg|stream/,
+    'startup': /startup|mvp|launch|product/,
+    'developer': /developer|engineer|programmer|coder/
+  };
+  return Object.entries(tagMap).filter(([,rx]) => rx.test(text)).map(([k]) => k).slice(0, 6);
+}
+
+function txInferEvidence(card) {
+  const ev = [];
+  if (card.worksWell && card.worksWell.length > 20) ev.push('writeup');
+  const text = [card.solution, card.coreWorkflow, card.worksWell].join(' ').toLowerCase();
+  if (/demo|working|runs|live|deployed/.test(text)) ev.push('demo');
+  if (/repo|github|gitlab|open.source/.test(text)) ev.push('repo');
+  if (/screenshot|screenshot|image|ui/.test(text)) ev.push('screenshots');
+  if (/user|customer|client|feedback/.test(text)) ev.push('users');
+  if (ev.length === 0) ev.push('none');
+  return ev;
+}
+
+function txBuildFingerprint(card) {
+  return {
+    projectId: String(card.id),
+    title: card.projectName,
+    oneLiner: card.oneLiner,
+    problem: card.problem,
+    solution: card.solution,
+    techStack: (card.mvpBuild || '').split(/[,\n]/).map(s => s.trim()).filter(Boolean).slice(0, 5),
+    domainTags: txInferDomainTags(card),
+    projectType: txInferProjectType(card),
+    maturityStage: txInferStage(card),
+    targetAudiences: txInferAudience(card),
+    commercialIntent: /monetiz|revenue|subscription|price|paid|charge/.test([card.monetization, card.solution].join(' ').toLowerCase()),
+    evidence: txInferEvidence(card),
+    handoffReadiness: parseInt(card.handoffReadiness) || 5,
+    missingPieces: card.doesntWork ? card.doesntWork.split('\n').filter(Boolean) : [],
+    updatedAt: Date.now()
+  };
+}
+
+function txRenderFingerprint(fp) {
+  const stageLabels = {
+    idea:'Idea',prototype:'Prototype',working_demo:'Working Demo',
+    beta:'Beta',launched:'Launched',production_ready:'Production Ready',oss_live:'OSS Live'
+  };
+  return `<div class="fingerprint-grid">
+    <div class="fp-item"><div class="fp-key">Type</div><div class="fp-val">${fp.projectType.replace('_',' ')}</div></div>
+    <div class="fp-item"><div class="fp-key">Stage</div><div class="fp-val">${stageLabels[fp.maturityStage] || fp.maturityStage}</div></div>
+    <div class="fp-item"><div class="fp-key">Handoff Readiness</div><div class="fp-val">${fp.handoffReadiness}/10</div></div>
+    <div class="fp-item"><div class="fp-key">Commercial</div><div class="fp-val">${fp.commercialIntent ? 'Yes' : 'No'}</div></div>
+    <div class="fp-item" style="grid-column:1/-1"><div class="fp-key">Audiences</div><div class="fp-tags">${fp.targetAudiences.map(a => '<span class="fp-tag">'+a.replace('_',' ')+'</span>').join('')}</div></div>
+    <div class="fp-item" style="grid-column:1/-1"><div class="fp-key">Domain Tags</div><div class="fp-tags">${fp.domainTags.map(t => '<span class="fp-tag">'+t+'</span>').join('')}</div></div>
+    <div class="fp-item" style="grid-column:1/-1"><div class="fp-key">Evidence</div><div class="fp-tags">${fp.evidence.map(e => '<span class="fp-tag" style="background:rgba(110,231,183,0.1);color:var(--accent3)">'+e+'</span>').join('')}</div></div>
+    ${fp.missingPieces.length ? '<div class="fp-item" style="grid-column:1/-1"><div class="fp-key">Known Gaps</div><div class="fp-val" style="font-size:0.7rem;color:var(--subtle)">' + fp.missingPieces.slice(0,2).join(' · ') + '</div></div>' : ''}
+  </div>`;
+}
+
+async function txGenerateFingerprint() {
+  const card = cards.find(c => String(c.id) === String(txState.selectedCardId));
+  if (!card) { toast('Select a card first'); return; }
+  
+  const fp = txBuildFingerprint(card);
+  txState.fingerprint = fp;
+  document.getElementById('txFingerprintDisplay').innerHTML = txRenderFingerprint(fp);
+  txMarkStepComplete(1);
+  txCloseStep(1);
+  
+  // Unlock + open step 2
+  txUnlockStep(2);
+  txOpenStep(2);
+  txRenderClosurePaths();
+  toast('Fingerprint generated');
+}
+
+// ── Closure path ──────────────────────────────────────────────────────────────
+function txRenderClosurePaths() {
+  const container = document.getElementById('closurePathPills');
+  container.innerHTML = CLOSURE_PATHS.map(p => `
+    <button class="pill ${txState.closurePath === p.id ? 'selected' : ''}" 
+      onclick="txSelectClosure('${p.id}', this)"
+      title="${p.desc}">
+      ${p.label}
+    </button>`).join('');
+}
+
+function txSelectClosure(id, el) {
+  txState.closurePath = id;
+  document.querySelectorAll('#closurePathPills .pill').forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function txConfirmClosure() {
+  if (!txState.closurePath) { toast('Select an objective first'); return; }
+  txMarkStepComplete(2);
+  txCloseStep(2);
+  txUnlockStep(3);
+  txOpenStep(3);
+  txRunRouting();
+}
+
+// ── Routing engine ────────────────────────────────────────────────────────────
+function txOverlap(a = [], b = []) {
+  if (!a.length || !b.length) return 0;
+  const matches = a.filter(x => b.includes(x)).length;
+  return matches / Math.max(a.length, b.length);
+}
+
+function txScoreVenue(fp, venue, mode) {
+  const reasons = [], warnings = [];
+  
+  const topicFit = txOverlap(fp.domainTags, venue.topicTags);
+  const audienceFit = txOverlap(fp.targetAudiences, venue.audienceTags);
+  const objectiveFit = (venue.closurePathFit || []).includes(fp.closurePath) ? 1 : 0.3;
+  const modeFit = (venue.allowedPostModes || []).includes(mode) ? 1 : 0;
+  const stageFit = (venue.stageFit || []).includes(fp.maturityStage) ? 1 : 0.5;
+  const hasRequiredProof = (venue.requiresProof || []).every(r => r === 'none' || fp.evidence.includes(r));
+  const proofFit = hasRequiredProof ? 1 : 0;
+  const toneFit = 0.7; // simplified
+  const promoFit = fp.commercialIntent ? (venue.selfPromoTolerance / 5) : 1;
+
+  let score =
+    topicFit * 25 +
+    audienceFit * 20 +
+    objectiveFit * 20 +
+    modeFit * 10 +
+    stageFit * 10 +
+    proofFit * 10 +
+    toneFit * 5;
+
+  if (fp.commercialIntent && venue.selfPromoTolerance < 2) {
+    score -= 12;
+    warnings.push('Commercial framing may be poorly received here');
+  }
+  if (!hasRequiredProof && (venue.requiresProof || []).length > 0) {
+    score -= 8;
+    warnings.push('Expected proof (' + venue.requiresProof.join(', ') + ') is missing');
+  }
+
+  if (topicFit > 0.4) reasons.push('Topic alignment is strong');
+  if (audienceFit > 0.4) reasons.push('Audience fit is solid');
+  if (modeFit) reasons.push('Supports ' + POST_MODE_LABELS[mode] + ' posts');
+  if (proofFit && (venue.requiresProof || []).length > 0) reasons.push('Available proof matches venue expectations');
+  if (stageFit === 1) reasons.push('Stage fit confirmed');
+
+  return {
+    venueId: venue.id, venueName: venue.name, platform: venue.platform,
+    score: Math.max(0, Math.min(100, Math.round(score))),
+    suggestedMode: mode, reasons, warnings,
+    dim: { topicFit, audienceFit, objectiveFit, modeFit, stageFit, proofFit }
+  };
+}
+
+function txRunRouting() {
+  const fp = { ...txState.fingerprint, closurePath: txState.closurePath };
+  const inferredMode = POST_MODES[txState.closurePath] || 'show';
+  
+  const matches = TX_VENUES
+    .map(v => txScoreVenue(fp, v, inferredMode))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 5);
+  
+  const container = document.getElementById('txVenueList');
+  container.innerHTML = matches.map(m => {
+    const scoreClass = m.score >= 70 ? 'score-high' : m.score >= 45 ? 'score-mid' : 'score-low';
+    const fillColor = m.score >= 70 ? 'var(--accent3)' : m.score >= 45 ? 'var(--accent)' : 'var(--danger)';
+    return `<div class="venue-card ${txState.selectedVenueId === m.venueId ? 'selected' : ''}" 
+      onclick="txSelectVenue('${m.venueId}', this)">
+      <div class="venue-card-top">
+        <div>
+          <div class="venue-name">${m.venueName}</div>
+          <div class="venue-platform">${m.platform}</div>
+          <div class="venue-mode-badge">${POST_MODE_LABELS[m.suggestedMode] || m.suggestedMode}</div>
+        </div>
+        <div class="venue-score ${scoreClass}">${m.score}</div>
+      </div>
+      <div class="score-bar"><div class="score-fill" style="width:${m.score}%;background:${fillColor}"></div></div>
+      <div class="venue-reasons">
+        ${m.reasons.slice(0,3).map(r => '<div class="venue-reason">'+r+'</div>').join('')}
+        ${m.warnings.map(w => '<div class="venue-warning">'+w+'</div>').join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function txSelectVenue(id, el) {
+  txState.selectedVenueId = id;
+  document.querySelectorAll('.venue-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  txMarkStepComplete(3);
+  txCloseStep(3);
+  txUnlockStep(4);
+  txOpenStep(4);
+  toast('Venue selected — generate your draft');
+}
+
+// ── Draft generation ──────────────────────────────────────────────────────────
+function txBuildTemplateDraft(card, venue, mode, closurePath) {
+  const fp = txState.fingerprint;
+  const catchText = fp.missingPieces.length ? fp.missingPieces.slice(0,2).join('; ') : 'early stage — expect rough edges';
+  const evidenceStr = fp.evidence.filter(e => e !== 'none').join(', ') || 'writeup only';
+
+  const opening = {
+    show: `I built ${card.projectName} because ${(card.problem || 'I kept running into this problem').substring(0,120)}.`,
+    ask: `I'm working on ${card.projectName} and wanted to get a gut check before going further.\n\n${(card.problem || 'The problem').substring(0,200)}`,
+    launch: `${card.projectName} is now live.\n\n${(card.oneLiner || card.solution || '').substring(0,200)}`,
+    oss_intro: `Releasing ${card.projectName} as open source.\n\n${(card.oneLiner || card.solution || '').substring(0,200)}`,
+    handoff: `I'm looking for someone to take over ${card.projectName}.`,
+    design_partner_request: `Looking for 2-3 teams who are dealing with: ${(card.problem || 'this problem').substring(0,150)}`,
+    technical_writeup: `${card.projectName}: ${(card.oneLiner || card.solution || '').substring(0,200)}`,
+    integration_pitch: `${card.projectName} solves ${(card.problem || 'a specific problem').substring(0,100)} — and it can plug into your existing workflow.`
+  };
+
+  const body = `${opening[mode] || opening.show}
+
+**What it does:**
+${card.solution || '(solution not specified)'}
+
+**How it works:**
+${card.coreWorkflow || '(workflow not specified)'}
+
+**What works:**
+${card.worksWell || '(not specified)'}
+
+**The catch:**
+${catchText}
+
+**Stack / proof:**
+${card.mvpBuild || '(not specified)'} — Evidence: ${evidenceStr}
+
+**The ask:**
+${closurePath === 'validation' ? 'Does this architecture make sense? What would you do differently?' :
+  closurePath === 'contributors' ? 'Looking for collaborators who know: ' + fp.targetAudiences.join(', ') :
+  closurePath === 'handoff' ? 'Looking for someone with operational background to take this forward.' :
+  closurePath === 'open_source' ? 'Repo is open. Issues and PRs welcome.' :
+  closurePath === 'design_partners' ? 'If your team deals with this — DM me.' :
+  'Happy to answer questions or share more context.'}`;
+
+  const shortVersion = `${card.projectName}: ${card.oneLiner || card.solution || ''}\n\nCatch: ${catchText}\n\nAsk: ${
+    closurePath === 'validation' ? 'Feedback welcome.' :
+    closurePath === 'handoff' ? 'Looking for an operator.' :
+    closurePath === 'open_source' ? 'Repo is open.' : 'Let me know what you think.'
+  }`;
+
+  const lowPromo = body.replace(/\*\*The ask:\*\*[\s\S]*/, '').trim() + '\n\nHappy to share more context in the comments.';
+
+  const adoptionProfile = closurePath === 'handoff' || closurePath === 'acquisition' ? 
+    `Ideal next owner:\n- ${fp.targetAudiences.map(a => a.replace('_',' ')).join('\n- ')}\n- Familiar with: ${fp.domainTags.slice(0,3).join(', ')}\n- Willing to handle: ${catchText}` : null;
+
+  return { title: txBuildTitle(card, venue, mode), body, shortVersion, lowPromoVariant: lowPromo, adoptionProfile };
+}
+
+function txBuildTitle(card, venue, mode) {
+  if (venue.id === 'hn_show') return `Show HN: ${card.projectName} – ${(card.oneLiner || card.solution || '').substring(0,60)}`;
+  if (venue.id === 'hn_ask') return `Ask HN: ${(card.problem || 'How would you approach this?').substring(0,80)}`;
+  if (venue.platform === 'Reddit') return `${card.projectName}: ${(card.oneLiner || card.solution || '').substring(0,70)}`;
+  if (venue.id === 'producthunt') return card.projectName;
+  return `${card.projectName} — ${(card.oneLiner || card.solution || '').substring(0,60)}`;
+}
+
+function txCheckCompliance(draftText, venue) {
+  const warnings = [], suggestions = [];
+  const lower = draftText.toLowerCase();
+  
+  BANNED_PHRASES.forEach(phrase => {
+    if (lower.includes(phrase.toLowerCase())) warnings.push('Banned phrase: "' + phrase + '"');
+  });
+  
+  if (venue.forbiddenPatterns) {
+    venue.forbiddenPatterns.forEach(p => {
+      if (lower.includes(p.toLowerCase())) warnings.push('Avoid venue anti-pattern: ' + p);
+    });
+  }
+  
+  if (draftText.length < 200) suggestions.push('Draft is very short — add more technical context');
+  if (!draftText.includes('?') && txState.closurePath === 'validation') suggestions.push('Validation posts work better with a direct question');
+  if (venue.requiresProof.length > 0 && txState.fingerprint.evidence.includes('none')) {
+    suggestions.push('This venue expects proof — add a repo or demo link before posting');
+  }
+  
+  return { passed: warnings.length === 0, warnings, suggestions };
+}
+
+function txRenderCompliance(compliance) {
+  const cls = compliance.passed ? 'compliance-pass' : 'compliance-warn';
+  const icon = compliance.passed ? '✓ Compliance check passed' : '⚠ Issues found';
+  const items = [
+    ...compliance.warnings.map(w => `<div class="compliance-item">⚠ ${w}</div>`),
+    ...compliance.suggestions.map(s => `<div class="compliance-item" style="color:var(--accent)">→ ${s}</div>`)
+  ].join('');
+  return `<div class="compliance-box ${cls}"><strong>${icon}</strong>${items}</div>`;
+}
+
+async function txGenerateDraftAI(card, venue, mode, closurePath) {
+  const apiKey = localStorage.getItem('tx_apikey') || '';
+  if (!apiKey) { toast('Add your Anthropic API key first'); txToggleAI(false); document.getElementById('aiToggle').checked = false; return null; }
+  
+  const fp = txState.fingerprint;
+  const systemPrompt = `You are a senior systems architect handing off a real technical project. Voice: direct, specific, practical, humble, mildly tired — never theatrical. NO marketing jargon. NO hype words like revolutionary, game-changing, unlock, seamless, delve. State what the project is in plain language. State what is already solved. State what is still missing. Make the ask explicit. Match the venue culture exactly.`;
+  
+  const userPrompt = `Write a ${POST_MODE_LABELS[mode] || mode} post for ${venue.name} (${venue.platform}).
+
+PROJECT:
+Name: ${card.projectName}
+One-liner: ${card.oneLiner || ''}
+Problem: ${card.problem || ''}
+Solution: ${card.solution || ''}
+Workflow: ${card.coreWorkflow || ''}
+Works well: ${card.worksWell || ''}
+Gaps/Issues: ${card.doesntWork || ''}
+Stack/MVP: ${card.mvpBuild || ''}
+Evidence: ${fp.evidence.join(', ')}
+
+CLOSURE GOAL: ${closurePath}
+VENUE NORMS: ${venue.norms.join('; ')}
+AVOID: ${venue.forbiddenPatterns.join('; ')}
+
+Return ONLY valid JSON (no markdown, no code fences):
+{
+  "title": "...",
+  "body": "...",
+  "shortVersion": "...",
+  "lowPromoVariant": "...",
+  "adoptionProfile": "..." or null
+}
+
+The draft must sound like a tired, brilliant engineer talking to a peer — NOT a marketer. Include "The catch" section honestly.`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1500,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userPrompt }]
+      })
+    });
+    const data = await res.json();
+    if (data.error) { toast('API error: ' + data.error.message); return null; }
+    const text = (data.content[0]?.text || '').replace(/```json|```/g, '').trim();
+    return JSON.parse(text);
+  } catch(e) {
+    toast('Draft generation failed — check API key'); return null;
+  }
+}
+
+async function txGenerateDraft() {
+  const card = cards.find(c => String(c.id) === String(txState.selectedCardId));
+  const venue = TX_VENUES.find(v => v.id === txState.selectedVenueId);
+  if (!card || !venue) { toast('Card or venue not found'); return; }
+  
+  const mode = txState.inferredMode || POST_MODES[txState.closurePath] || 'show';
+  
+  document.getElementById('txDraftLoading').style.display = 'flex';
+  document.getElementById('txDraftPanel').style.display = 'none';
+  document.getElementById('txGenDraftBtn').disabled = true;
+  
+  let draft;
+  if (txState.aiEnabled) {
+    draft = await txGenerateDraftAI(card, venue, mode, txState.closurePath);
+    if (!draft) draft = txBuildTemplateDraft(card, venue, mode, txState.closurePath);
+  } else {
+    draft = txBuildTemplateDraft(card, venue, mode, txState.closurePath);
+    await new Promise(r => setTimeout(r, 400)); // brief delay for feel
+  }
+  
+  txState.draftPackage = { ...draft, venueId: venue.id, closurePath: txState.closurePath, postMode: mode };
+  
+  const compliance = txCheckCompliance(draft.body, venue);
+  
+  document.getElementById('txDraftLoading').style.display = 'none';
+  document.getElementById('txDraftPanel').style.display = 'block';
+  
+  const variants = [
+    { id: 'body', label: 'Full Draft' },
+    { id: 'shortVersion', label: 'Short' },
+    { id: 'lowPromoVariant', label: 'Low Promo' },
+    ...(draft.adoptionProfile ? [{ id: 'adoptionProfile', label: 'Adoption Profile' }] : [])
+  ];
+  
+  document.getElementById('txDraftTabs').innerHTML = variants.map(v =>
+    `<button class="draft-tab ${v.id === 'body' ? 'active' : ''}" onclick="txSwitchDraftVariant('${v.id}', this)">${v.label}</button>`
+  ).join('');
+  
+  document.getElementById('txDraftTitle').textContent = draft.title;
+  document.getElementById('txDraftOutput').textContent = draft.body;
+  document.getElementById('txCompliance').innerHTML = txRenderCompliance(compliance);
+  document.getElementById('txCopyBtn').style.display = 'inline-flex';
+  document.getElementById('txGenDraftBtn').disabled = false;
+  
+  txState.currentDraftVariant = 'body';
+  txMarkStepComplete(4);
+  txUnlockStep(5);
+  
+  txRenderExternalize(card, venue);
+  toast('Draft ready' + (txState.aiEnabled ? ' (AI)' : ' (template)'));
+}
+
+function txSwitchDraftVariant(id, btn) {
+  txState.currentDraftVariant = id;
+  document.querySelectorAll('.draft-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  const val = txState.draftPackage[id];
+  document.getElementById('txDraftOutput').textContent = val || '(not available for this variant)';
+}
+
+function txCopyDraft() {
+  const text = txState.draftPackage[txState.currentDraftVariant] || '';
+  const full = txState.draftPackage.title + '\n\n' + text;
+  navigator.clipboard.writeText(full).then(() => {
+    toast('Draft copied to clipboard');
+    txState.draftPackage._copied = true;
+  });
+}
+
+// ── Externalize ───────────────────────────────────────────────────────────────
+function txRenderExternalize(card, venue) {
+  const isExternalized = txState.externalizedIds.includes(String(card.id));
+  const ramScore = Math.min(95, 40 + (card.handoffReadiness || 5) * 5);
+  
+  if (isExternalized) {
+    const outcome = txState.outcomes[card.id] || {};
+    document.getElementById('txExternalizeContent').innerHTML = `
+      <div class="externalize-card">
+        <div class="externalize-icon">✓</div>
+        <div class="externalize-title">${card.projectName} is externalized</div>
+        <div class="externalize-desc">This project has been packaged and released. You can close the loop.</div>
+        <div class="ram-badge">⚡ ~${ramScore}% Mental RAM freed</div>
+        ${outcome.externalizedAt ? '<div style="font-size:0.7rem;color:var(--subtle);margin-top:0.5rem;">Externalized: '+new Date(outcome.externalizedAt).toLocaleDateString()+'</div>' : ''}
+      </div>`;
+    txMarkStepComplete(5);
+    return;
+  }
+  
+  document.getElementById('txExternalizeContent').innerHTML = `
+    <div class="externalize-card">
+      <div class="externalize-icon">✈️</div>
+      <div class="externalize-title">Ready to release?</div>
+      <div class="externalize-desc">
+        Marking this project as externalized signals that you've handed it off enough to stop carrying it mentally.
+        The card will be archived. <strong>This is the point of the whole thing.</strong>
+      </div>
+      <div class="ram-badge">⚡ ~${ramScore}% Mental RAM to be freed</div>
+      <div style="margin-bottom:1.25rem;">
+        <div style="font-family:'Syne',sans-serif;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:0.5rem;">Optional: log outcome quality</div>
+        <div class="outcome-stars" id="outcomeStars">
+          ${[1,2,3,4,5].map(i => '<span class="outcome-star" onclick="txSetOutcomeScore('+i+')" data-score="'+i+'">⭐</span>').join('')}
+        </div>
+        <div style="font-size:0.67rem;color:var(--subtle);margin-top:0.35rem;">How good was the response? (optional)</div>
+      </div>
+      <div class="btn-row" style="justify-content:center;">
+        <button class="btn btn-primary ripple-host" onclick="txConfirmExternalize('${card.id}')">⇢ Mark Externalized</button>
+        <button class="btn btn-secondary" onclick="txOpenStep(4)">← Back to Draft</button>
+      </div>
+    </div>`;
+  txOpenStep(5);
+}
+
+let txOutcomeScore = null;
+function txSetOutcomeScore(n) {
+  txOutcomeScore = n;
+  document.querySelectorAll('.outcome-star').forEach((s, i) => {
+    s.classList.toggle('active', i < n);
+  });
+}
+
+async function txConfirmExternalize(cardId) {
+  if (!txState.externalizedIds.includes(String(cardId))) {
+    txState.externalizedIds.push(String(cardId));
+    localStorage.setItem('tx_externalized', JSON.stringify(txState.externalizedIds));
+  }
+  const outcome = {
+    projectId: cardId,
+    venueId: txState.selectedVenueId,
+    postMode: txState.draftPackage?.postMode,
+    closurePath: txState.closurePath,
+    externalizedAt: Date.now(),
+    responseQuality: txOutcomeScore || null
+  };
+  txState.outcomes[cardId] = outcome;
+  localStorage.setItem('tx_outcomes', JSON.stringify(txState.outcomes));
+  
+  txMarkStepComplete(5);
+  txPopulateSelect();
+  renderDashboard();
+  
+  const card = cards.find(c => String(c.id) === String(cardId));
+  const venue = TX_VENUES.find(v => v.id === txState.selectedVenueId);
+  const ramScore = Math.min(95, 40 + ((card?.handoffReadiness || 5) * 5));
+  
+  document.getElementById('txExternalizeContent').innerHTML = `
+    <div class="externalize-card" style="border-color:rgba(110,231,183,0.5);">
+      <div class="externalize-icon" style="animation: fadeSlideUp 0.5s both">✅</div>
+      <div class="externalize-title">Released.</div>
+      <div class="externalize-desc">
+        <strong>${card?.projectName || 'Project'}</strong> is now externalized.<br>
+        Posted to: <span style="color:var(--accent)">${venue?.name || 'your chosen venue'}</span><br>
+        Closure: <span style="color:var(--accent2)">${txState.closurePath?.replace('_',' ') || ''}</span>
+      </div>
+      <div class="ram-badge">⚡ ~${ramScore}% Mental RAM freed</div>
+      <div style="font-size:0.72rem;color:var(--subtle);margin-top:0.75rem;">The card has been archived. You can now stop thinking about it.</div>
+    </div>`;
+  toast('✓ ' + (card?.projectName || 'Project') + ' externalized');
+}
+
+// ── Dashboard: show externalized badge on cards ───────────────────────────────
+// patch renderDashboard to decorate externalized cards after render
+
+// ── Initialize TX on tab switch ────────────────────────────────────────────────
+// switchTab TX hook: injected directly into original switchTab function
+
+// renderDashboard is already patched inline via sc-card class in the forEach
+
+// ── Also patch openDetail to show Transmit button ─────────────────────────────
+// openDetail TX hook: injected directly into original openDetail function
+
+
+// TX: inject Transmit button into detail view after it renders
+function txInjectDetailButton(id) {
+  setTimeout(() => {
+    const dc = document.getElementById('detailContent');
+    if (!dc) return;
+    if (dc.querySelector('.tx-detail-btn-wrap')) return;
+    const btnWrap = document.createElement('div');
+    btnWrap.className = 'btn-row tx-detail-btn-wrap';
+    btnWrap.style.marginTop = '1rem';
+    const isExt = txState && txState.externalizedIds.includes(String(id));
+    btnWrap.innerHTML = isExt
+      ? '<span class="sc-badge-externalized">&#10003; Externalized</span>'
+      : '<button class="btn btn-primary ripple-host tx-detail-btn" onclick="txLaunchFromCard('+id+')">&#x21E2; Transmit This</button>';
+    dc.appendChild(btnWrap);
+  }, 120);
+}
+
+function txLaunchFromCard(id) {
+  closeDetail();
+  // Switch to transmit tab
+  const txBtn = document.querySelector('.tx-tab');
+  if (txBtn) switchTab('transmit', txBtn);
+  // Auto-select this card
+  setTimeout(() => {
+    const sel = document.getElementById('txProjectSelect');
+    if (sel) { sel.value = id; txSelectProject(String(id)); }
+  }, 200);
+}
+
 // ─── KEYBOARD SHORTCUTS ───────────────────────────────────────────────────────
 document.addEventListener('keydown', (e) => {
   if (e.metaKey || e.ctrlKey) {
@@ -1360,5 +2614,6 @@ document.addEventListener('visibilitychange', async () => {
   }
 });
 </script>
+
 </body>
 </html>
